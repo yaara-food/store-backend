@@ -1,0 +1,42 @@
+import "reflect-metadata";
+import dotenv from "dotenv";
+
+dotenv.config();
+import bcrypt from "bcrypt";
+import {User} from "../src/entities";
+import {DB} from "../src/db";
+
+export async function CreateUser(
+    username: string,
+    email: string,
+    password: string,
+) {
+    await DB.initialize();
+
+    const existing = await DB.getRepository(User).findOneBy({email});
+    if (existing) {
+        console.error("❌ Email already registered");
+        process.exit(1);
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const user = DB.getRepository(User).create({
+        username,
+        email,
+        password: hashedPassword,
+    });
+
+    await DB.getRepository(User).save(user);
+
+    console.log("✅ User registered");
+    process.exit(0);
+}
+
+const username = "admin";
+const email = process.env.GMAIL_USER;
+const password = "yaara";
+CreateUser(username, email, password).catch((err) => {
+    console.error(err);
+    process.exit(1);
+});

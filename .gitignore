@@ -1,0 +1,29 @@
+# Node
+node_modules/
+package-lock.json
+dist/
+build/
+.env
+.idea
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# TypeScript
+*.tsbuildinfo
+
+# Vercel
+.vercel/
+
+# tsx cache
+.turbo/
+.cache/
+.tscache/
