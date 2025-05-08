@@ -17,7 +17,7 @@ async function resetTables() {
     console.log("✅ Tables reset.");
 }
 
-const random_image = true
+const random_image = false
 const image_soon = "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/yaara_soon.jpeg";
 
 async function insertData() {
