@@ -6,12 +6,8 @@ import routes from "./routes";
 import {initDBMiddleware} from "./db";
 
 const app = express();
-const allowedOrigins = [
-    "http://localhost:3000",
-    "https://yaara-store.vercel.app",
-    "https://yaara-tau.vercel.app",
-    "https://store.yaarafoodforest.com",
-];
+
+const allowedOrigins = process.env.ALLOWED_ORIGINS?.split(",");
 app.use(
     cors({
         origin: allowedOrigins,
