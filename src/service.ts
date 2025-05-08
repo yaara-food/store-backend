@@ -175,21 +175,32 @@ export async function sendOrderConfirmationEmail(order: Order) {
     const subject = `${email_data.subjectPrefix} ${order.id}`;
     const text = `${email_data.greeting} ${order.name}, ${email_data.confirmation} ${email_data.orderNumberLabel} #${order.id}. ${email_data.totalLabel}${order.cost.toFixed(2)}`;
 
-    const mailOptions = {
-        from: `"${process.env.STORE_NAME}" <${process.env.STORE_EMAIL}>`,
-        to: order.email,
-        replyTo: process.env.GMAIL_USER,
-        bcc: process.env.GMAIL_USER,
-        subject,
-        text,
-        html,
-    };
+    const transporter = getTransporter();
 
     try {
-        const result = await getTransporter().sendMail(mailOptions);
-        console.log("✅ Email sent:", result.response);
+        //   Send to customer
+        await transporter.sendMail({
+            from: `"${process.env.STORE_NAME}" <${process.env.STORE_EMAIL}>`,
+            to: order.email,
+            replyTo: process.env.GMAIL_USER, // customer replies to Gmail
+            subject,
+            text,
+            html,
+        });
+
+        //  Send to admin (your Gmail)
+        await transporter.sendMail({
+            from: `"${process.env.STORE_NAME}" <${process.env.STORE_EMAIL}>`,
+            to: process.env.GMAIL_USER,
+            replyTo: order.email, // so you can reply to the customer
+            subject,
+            text,
+            html,
+        });
+        console.log("✅ Email sent:");
+
     } catch (err) {
-        console.error("❌ Email failed:", err);
+        console.error("❌ Email sending failed:", err);
     }
 }
 
