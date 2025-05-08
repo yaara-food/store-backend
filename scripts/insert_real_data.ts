@@ -17,6 +17,9 @@ async function resetTables() {
     console.log("✅ Tables reset.");
 }
 
+const random_image = true
+const image_soon = "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/yaara_soon.jpeg";
+
 async function insertData() {
     const em = DB.manager;
     console.log("📥 Inserting mock data...");
@@ -55,7 +58,7 @@ async function insertData() {
 
         const savedProduct = await em.save(product);
 
-        const randomImages = getRandomImages(Math.floor(Math.random() * 5) + 1);
+        const randomImages = random_image ? getRandomImages(Math.floor(Math.random() * 5) + 1) : [image_soon];
         for (const url of randomImages) {
             const image = em.create(ProductImage, {
                 product: savedProduct,

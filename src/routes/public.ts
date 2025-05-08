@@ -38,10 +38,10 @@ router.post("/checkout", async (req: Request, res: Response) => {
         });
 
         const savedOrder = await DB.getRepository(Order).save(order);
-
-        await sendOrderConfirmationEmail(savedOrder);
-        // await sendAdminWhatsApp(savedOrder.id)
-
+        if (process.env.SEND_EMAIL_WHATSAPP === 'true') {
+            await sendOrderConfirmationEmail(savedOrder);
+            await sendAdminWhatsApp(savedOrder.id)
+        }
 
         res.status(201).json(savedOrder);
     } catch (err) {
