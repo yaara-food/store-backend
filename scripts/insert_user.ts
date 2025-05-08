@@ -2,7 +2,7 @@ import "reflect-metadata";
 import dotenv from "dotenv";
 
 dotenv.config();
-import bcrypt from "bcrypt";
+import bcrypt from 'bcryptjs';
 import {User} from "../src/entities";
 import {DB} from "../src/db";
 
