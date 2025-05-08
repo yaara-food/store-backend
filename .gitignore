@@ -5,6 +5,7 @@ dist/
 build/
 .env
 .idea
+push_to_prod.sh
 
 # Logs
 npm-debug.log*
