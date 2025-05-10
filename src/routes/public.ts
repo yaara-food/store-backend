@@ -3,7 +3,7 @@ import bcrypt from 'bcryptjs';
 import jwt from "jsonwebtoken";
 
 import {DB} from "../db";
-import {Product, Collection, OrderItem, Order, User} from "../entities";
+import {Product, Category, OrderItem, Order, User} from "../entities";
 import {sendAdminWhatsApp, sendOrderConfirmationEmail} from "../service";
 import {title_to_handle} from "../util";
 
@@ -51,28 +51,29 @@ router.post("/checkout", async (req: Request, res: Response) => {
 });
 router.get("/data", async (req: Request, res: Response) => {
     try {
-        const [products, collections] = await Promise.all([
+        const [products, categories] = await Promise.all([
             DB.getRepository(Product).find({
-                relations: ["images"], // ✅ skip full collection
+                relations: ["images"],
                 order: {updatedAt: "DESC"},
             }),
-            DB.getRepository(Collection).find({
+            DB.getRepository(Category).find({
                 order: {position: "ASC"},
             }),
         ]);
 
-        const collection_id_title = Object.fromEntries(
-            collections.map((c) => [c.id, c.title])
+        const categories_map_id_handle = Object.fromEntries(
+            categories.map((c) => [c.id, c.handle])
         ) as Record<number, string>;
 
+        // category: title_to_handle(categories_map_id_handle[product.category_id]),
 
-        const formattedProducts = products.map((product: any) => ({
+        const formatted_products = products.map((product: any) => ({
             ...product,
-            collection: title_to_handle(collection_id_title[product.collection_id]),
+            category: categories_map_id_handle[product.category_id],
             featuredImage: product.images[0],
         }));
 
-        res.json({products: formattedProducts, collections});
+        res.json({products: formatted_products, categories});
     } catch (err) {
         console.error("❌ Failed to fetch data:", err);
         res.status(500).json({error: "Internal Server Error"});

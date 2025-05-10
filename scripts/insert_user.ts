@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import "reflect-metadata";
 import dotenv from "dotenv";
 
@@ -36,7 +38,7 @@ export async function CreateUser(
 const username = "admin";
 const email = process.env.GMAIL_USER;
 const password = "yaara";
-// CreateUser(username, email, password).catch((err) => {
-//     console.error(err);
-//     process.exit(1);
-// });
+CreateUser(username, email, password).catch((err) => {
+    console.error(err);
+    process.exit(1);
+});

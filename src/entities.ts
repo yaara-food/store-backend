@@ -13,7 +13,7 @@ import {OrderStatus} from "./util";
 @Entity()
 @Check(`"title" <> ''`)
 @Check(`"handle" <> ''`)
-export class Collection {
+export class Category {
     @PrimaryGeneratedColumn()
     id!: number;
 
@@ -29,7 +29,7 @@ export class Collection {
     @Column({type: "timestamp", default: () => "CURRENT_TIMESTAMP"})
     updatedAt!: Date;
 
-    @OneToMany(() => Product, (product) => product.collection, {
+    @OneToMany(() => Product, (product) => product.category, {
         cascade: ['remove'],
     })
     products!: Product[];
@@ -43,35 +43,38 @@ export class Product {
     @PrimaryGeneratedColumn()
     id!: number;
 
-    @Column("varchar", {unique: true, nullable: false})
+    @Column("varchar", { unique: true, nullable: false })
     handle!: string;
 
-    @ManyToOne(() => Collection, (collection) => collection.products, {
+    @ManyToOne(() => Category, (category) => category.products, {
         onDelete: "CASCADE",
         nullable: false,
     })
-    @JoinColumn({name: "collection_id"})
-    collection!: Collection;
+    @JoinColumn({ name: "category_id" })
+    category!: Category;
 
     @Column("int")
-    collection_id!: number;
+    category_id!: number;
 
-    @Column("boolean", {nullable: false})
+    @Column("boolean", { nullable: false })
     available!: boolean;
 
-    @Column("varchar", {nullable: false})
+    @Column("varchar", { nullable: false })
     title!: string;
 
-    @Column("text", {nullable: false})
+    @Column("text", { nullable: false })
     description!: string;
 
-    @Column("numeric", {nullable: false})
+    @Column("numeric", { nullable: false })
     price!: number;
 
-    @Column({type: "timestamp", default: () => "CURRENT_TIMESTAMP"})
+    @Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })
     updatedAt!: Date;
 
-    @OneToMany(() => ProductImage, (image) => image.product)
+    @OneToMany(() => ProductImage, (image) => image.product, {
+        cascade: true,
+        orphanedRowAction: "delete",
+    })
     images!: ProductImage[];
 }
 
@@ -82,17 +85,17 @@ export class ProductImage {
     @PrimaryGeneratedColumn()
     id!: number;
 
-    @Column("varchar", {nullable: false})
+    @Column("varchar", { nullable: false })
     url!: string;
 
-    @Column("varchar", {nullable: false})
+    @Column("varchar", { nullable: false })
     altText!: string;
 
     @ManyToOne(() => Product, (product) => product.images, {
         onDelete: "CASCADE",
         nullable: false,
     })
-    @JoinColumn({name: "product_id"})
+    @JoinColumn({ name: "product_id" })
     product!: Product;
 }
 

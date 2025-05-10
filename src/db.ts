@@ -1,7 +1,7 @@
 import dotenv from "dotenv";
 import { DataSource, DataSourceOptions } from "typeorm";
 import {
-  Collection,
+  Category,
   Order,
   OrderItem,
   Product,
@@ -21,7 +21,7 @@ export const DB = new DataSource({
   database: process.env.DB_NAME,
   synchronize: true,
   logging: false,
-  entities: [Product, Collection, ProductImage, Order, OrderItem, User],
+  entities: [Product, Category, ProductImage, Order, OrderItem, User],
 } as DataSourceOptions);
 
 let initialized = false;

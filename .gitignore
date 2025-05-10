@@ -6,6 +6,7 @@ dist/
 build/
 .env
 .idea
+.vscode
 push_to_prod.sh
 
 # Logs

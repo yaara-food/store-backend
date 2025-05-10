@@ -6,7 +6,7 @@ import path from "path";
 import {Request, Response, NextFunction} from "express";
 
 import nodemailer from "nodemailer";
-import {Collection, Order} from "./entities";
+import {Category, Order} from "./entities";
 
 import {put} from "@vercel/blob";
 import {email_data} from "./util";
@@ -77,10 +77,10 @@ export async function handleImageUpload(
     }
 }
 
-export async function handleReorderCollection(
-    repo: Repository<Collection>,
-    saved: Collection,
-): Promise<Collection> {
+export async function handleReorderCategory(
+    repo: Repository<Category>,
+    saved: Category,
+): Promise<Category> {
     const all = await repo.find({
         order: {position: "ASC"},
     });
@@ -91,7 +91,7 @@ export async function handleReorderCollection(
         1,
         Math.min(saved.position ?? filtered.length + 1, filtered.length + 1),
     );
-    const updatedList: Collection[] = [];
+    const updatedList: Category[] = [];
 
     let inserted = false;
 

@@ -4,7 +4,8 @@
   "main": "dist/index.js",
   "scripts": {
     "dev": "tsx src/dev.ts",
-    "debug": "node --inspect-brk node_modules/.bin/tsx scripts/insert_real_data.ts",
+    "hot": "nodemon --exec tsx src/dev.ts",
+    "debug": "node --inspect-brk node_modules/.bin/tsx scripts/insert_data.ts",
     "build": "tsc",
     "start": "node dist/index.js"
   },
@@ -33,6 +34,8 @@
     "@types/multer": "^1.4.12",
     "@types/node": "^18.0.0",
     "@types/nodemailer": "^6.4.17",
+    "nodemon": "^3.1.10",
+    "ts-node": "^10.9.2",
     "tsx": "^4.19.3",
     "typescript": "^5.0.0"
   },

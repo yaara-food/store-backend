@@ -1,9 +1,9 @@
 import { Request, Response, Router } from "express";
 import multer from "multer";
 import { DB } from "../db";
-import { Product, Collection, ProductImage, Order } from "../entities";
+import { Product, Category, ProductImage, Order } from "../entities";
 import { title_to_handle } from "../util";
-import { handleImageUpload, handleReorderCollection } from "../service";
+import { handleImageUpload, handleReorderCategory } from "../service";
 
 const router = Router();
 const upload = multer();
@@ -33,17 +33,27 @@ router.get("/order/:id", async (req: Request, res: Response) => {
   }
 });
 router.post("/order/status", async (req, res) => {
-  const { id, status } = req.body;
+  try {
+    const { id, status } = req.body;
 
-  const repo = DB.getRepository(Order);
-  const order = await repo.findOne({ where: { id } });
+    const repo = DB.getRepository(Order);
+    const order = await repo.findOne({ where: { id } });
 
-  if (!order) return res.status(404).json({ error: "Not found" });
+    if (!order) return res.status(404).json({ error: "Not found" });
 
-  order.status = status;
-  await repo.save(order);
+    order.status = status;
+    const saved = await repo.save(order);
 
-  res.json(order);
+    return res.json(saved);
+  } catch (error: any) {
+    console.error("❌ Failed to update order status:", error);
+    return res.status(500).json({
+      error:
+          error?.detail ||
+          error?.message ||
+          "Internal server error during order status update",
+    });
+  }
 });
 
 router.get("/orders", async (req: Request, res: Response) => {
@@ -69,88 +79,110 @@ router.get("/orders", async (req: Request, res: Response) => {
   }
 });
 router.post("/product/:add_or_id", async (req: Request, res: Response) => {
-  const { add_or_id } = req.params;
-  const body = req.body;
-  body.handle = title_to_handle(body.title);
-  body.updatedAt = new Date();
+  try {
+    const { add_or_id } = req.params;
+    const body = req.body;
+    body.handle = title_to_handle(body.title);
+    body.updatedAt = new Date();
 
-  const repo = DB.getRepository(Product);
-  const { images, ...productData } = body;
+    const repo = DB.getRepository(Product);
+    const { images, ...productData } = body;
 
-  if (add_or_id === "add") {
-    const product = new Product();
-    Object.assign(product, productData);
+    if (add_or_id === "add") {
+      const product = new Product();
+      Object.assign(product, productData);
 
-    const savedProduct = await repo.save(product);
-    if (Array.isArray(images)) {
-      const imageRepo = DB.getRepository(ProductImage);
-      const imageEntities = images.map((img) =>
-        imageRepo.create({
-          product: savedProduct,
-          url: img.url,
-          altText: img.altText,
-        }),
-      );
-      await imageRepo.save(imageEntities);
+      const savedProduct = await repo.save(product);
+
+      if (Array.isArray(images)) {
+        const imageRepo = DB.getRepository(ProductImage);
+        const imageEntities = images.map((img) =>
+            imageRepo.create({
+              product: savedProduct,
+              url: img.url,
+              altText: img.altText,
+            }),
+        );
+        await imageRepo.save(imageEntities);
+      }
+
+      return res.status(201).json({ ...savedProduct, images });
     }
 
-    return res.status(201).json({ ...savedProduct, images });
+    const existing = await repo.findOne({
+      where: { id: Number(add_or_id) },
+      relations: ["images"],
+    });
+
+    if (!existing) return res.status(404).json({ error: "Entity not found" });
+
+    Object.assign(existing, productData);
+    const updatedProduct = await repo.save(existing);
+
+    if (Array.isArray(images)) {
+      const imageRepo = DB.getRepository(ProductImage);
+      await imageRepo.delete({ product: updatedProduct });
+      const newImages = images.map((img) =>
+          imageRepo.create({
+            product: updatedProduct,
+            url: img.url,
+            altText: img.altText,
+          }),
+      );
+      await imageRepo.save(newImages);
+    }
+
+    return res.status(200).json({ ...updatedProduct, images });
+  } catch (error: any) {
+    console.error("❌ Failed to submit product:", error);
+    return res.status(500).json({
+      error:
+          error?.detail ||
+          error?.message ||
+          "Internal server error during product submission",
+    });
   }
-
-  const existing = await repo.findOne({
-    where: { id: Number(add_or_id) },
-    relations: ["images"],
-  });
-  if (!existing) return res.status(404).json({ error: "Entity not found" });
-
-  Object.assign(existing, productData);
-  const updatedProduct = await repo.save(existing);
-
-  if (Array.isArray(images)) {
-    const imageRepo = DB.getRepository(ProductImage);
-    await imageRepo.delete({ product: updatedProduct });
-    const newImages = images.map((img) =>
-      imageRepo.create({
-        product: updatedProduct,
-        url: img.url,
-        altText: img.altText,
-      }),
-    );
-    await imageRepo.save(newImages);
-  }
-
-  return res.status(200).json({ ...updatedProduct, images });
 });
+router.post("/category/:add_or_id", async (req: Request, res: Response) => {
+  try {
+    const { add_or_id } = req.params;
+    const body = req.body;
+    body.updatedAt = new Date();
+    body.handle = title_to_handle(body.title);
 
-router.post("/collection/:add_or_id", async (req: Request, res: Response) => {
-  const { add_or_id } = req.params;
-  const body = req.body;
-  body.updatedAt = new Date();
+    const repo = DB.getRepository(Category);
+    let instance;
 
-  const repo = DB.getRepository(Collection);
-  let instance;
+    if (add_or_id === "add") {
+      instance = repo.create(body);
+    } else {
+      instance = await repo.preload({ id: Number(add_or_id), ...body });
+      if (!instance) return res.status(404).json({ error: "Entity not found" });
+    }
 
-  if (add_or_id === "add") {
-    instance = repo.create(body);
-  } else {
-    instance = await repo.preload({ id: Number(add_or_id), ...body });
-    if (!instance) return res.status(404).json({ error: "Entity not found" });
+    const saved = await repo.save(instance);
+    const final = await handleReorderCategory(repo, saved as Category);
+    return res.status(add_or_id === "add" ? 201 : 200).json(final);
+  } catch (error: any) {
+    console.error("❌ Failed to submit category:", error);
+    return res.status(500).json({
+      error:
+          error?.detail ||
+          error?.message ||
+          "Internal server error during category submission",
+    });
   }
-
-  const saved = await repo.save(instance);
-  const final = await handleReorderCollection(repo, saved as Collection);
-  return res.status(add_or_id === "add" ? 201 : 200).json(final);
 });
 
 router.delete("/:model/:id", async (req: Request, res: Response) => {
   const { model, id } = req.params;
 
   try {
-    if (!["product", "collection"].includes(model)) {
+    if (!["product", "category"].includes(model)) {
       return res.status(400).json({ error: "Unsupported model" });
     }
 
-    const repo = DB.getRepository(model === "product" ? Product : Collection);
+    const repo = DB.getRepository(model === "product" ? Product : Category);
     const entity = await repo.findOne({
       where: { id: Number(id) },
     });

@@ -48,7 +48,7 @@ async function sendOrderConfirmationEmail(order: Order) {
         console.error("❌ Email sending failed:", err);
     }
 }
-
+console.log("Script started ✅");
 // Example call (test)
 sendOrderConfirmationEmail({
     name: "lorem",
@@ -62,21 +62,27 @@ sendOrderConfirmationEmail({
             quantity: 1,
             unitAmount: "11",
             totalAmount: 11,
-            imageUrl:
-                "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/istockphoto-956366756-612x612.jpg",
-            imageAlt: "שרך בוסטון",
+            imageUrl: "...",
+            imageAlt: "...",
+            id: 1,
+            productId: 123,
+            handle: "srach-boston",
+            order: undefined as any, // or skip if optional
         },
         {
             title: "קיסוס",
             quantity: 1,
             unitAmount: "101.33",
             totalAmount: 101.33,
-            imageUrl:
-                "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/%D7%90%D7%A9%D7%99%D7%A0%D7%98%D7%95%D7%A1-%D7%A8%D7%90%D7%A1%D7%98%D7%94-%D7%9E%D7%A1%D7%95%D7%9C%D7%A1%D7%9C-M-800x800.jpg",
-            imageAlt: "קיסוס",
+            imageUrl: "...",
+            imageAlt: "...",
+            id: 2,
+            productId: 124,
+            handle: "kisos",
+            order: undefined as any,
         },
     ],
     id: 12,
     status: "new",
     createdAt: new Date().toISOString(),
-} as Order);
+} as unknown as Order); // 👈 bypass type mismatch
