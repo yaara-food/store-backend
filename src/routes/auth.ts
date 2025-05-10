@@ -79,61 +79,65 @@ router.get("/orders", async (req: Request, res: Response) => {
   }
 });
 router.post("/product/:add_or_id", async (req: Request, res: Response) => {
-  try {
-    const { add_or_id } = req.params;
-    const body = req.body;
-    body.handle = title_to_handle(body.title);
-    body.updatedAt = new Date();
+  const { add_or_id } = req.params;
+  const body = req.body;
+  body.handle = title_to_handle(body.title);
+  body.updatedAt = new Date();
 
-    const repo = DB.getRepository(Product);
-    const { images, ...productData } = body;
+  const { images, ...productData } = body;
+
+  if (!Array.isArray(images) || images.length === 0) {
+    return res.status(400).json({ error: "Product must have at least one image" });
+  }
+
+  const queryRunner = DB.createQueryRunner();
+  await queryRunner.connect();
+  await queryRunner.startTransaction();
+
+  try {
+    const productRepo = queryRunner.manager.getRepository(Product);
+    const imageRepo = queryRunner.manager.getRepository(ProductImage);
+
+    let product: Product;
 
     if (add_or_id === "add") {
-      const product = new Product();
-      Object.assign(product, productData);
+      product = productRepo.create(productData);
+      product = await productRepo.save(product);
+    } else {
+      product = await productRepo.findOne({
+        where: { id: Number(add_or_id) },
+        relations: ["images"],
+      });
 
-      const savedProduct = await repo.save(product);
-
-      if (Array.isArray(images)) {
-        const imageRepo = DB.getRepository(ProductImage);
-        const imageEntities = images.map((img) =>
-            imageRepo.create({
-              product: savedProduct,
-              url: img.url,
-              altText: img.altText,
-            }),
-        );
-        await imageRepo.save(imageEntities);
+      if (!product) {
+        throw new Error("Entity not found");
       }
 
-      return res.status(201).json({ ...savedProduct, images });
+      Object.assign(product, productData);
+      product = await productRepo.save(product);
+
+      // Delete existing images
+      await imageRepo.delete({ product });
     }
 
-    const existing = await repo.findOne({
-      where: { id: Number(add_or_id) },
-      relations: ["images"],
+    // Save new images
+    const imageEntities = images.map((img) =>
+        imageRepo.create({
+          product,
+          url: img.url,
+          altText: img.altText,
+        }),
+    );
+    await imageRepo.save(imageEntities);
+
+    await queryRunner.commitTransaction();
+
+    return res.status(add_or_id === "add" ? 201 : 200).json({
+      ...product,
+      images,
     });
-
-    if (!existing) return res.status(404).json({ error: "Entity not found" });
-
-    Object.assign(existing, productData);
-    const updatedProduct = await repo.save(existing);
-
-    if (Array.isArray(images)) {
-      const imageRepo = DB.getRepository(ProductImage);
-      await imageRepo.delete({ product: updatedProduct });
-      const newImages = images.map((img) =>
-          imageRepo.create({
-            product: updatedProduct,
-            url: img.url,
-            altText: img.altText,
-          }),
-      );
-      await imageRepo.save(newImages);
-    }
-
-    return res.status(200).json({ ...updatedProduct, images });
   } catch (error: any) {
+    await queryRunner.rollbackTransaction();
     console.error("❌ Failed to submit product:", error);
     return res.status(500).json({
       error:
@@ -141,6 +145,8 @@ router.post("/product/:add_or_id", async (req: Request, res: Response) => {
           error?.message ||
           "Internal server error during product submission",
     });
+  } finally {
+    await queryRunner.release();
   }
 });
 router.post("/category/:add_or_id", async (req: Request, res: Response) => {
