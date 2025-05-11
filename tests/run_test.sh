@@ -16,7 +16,7 @@ else
 fi
 
 echo "🚀 Running tests..."
-if npm test; then
+if pnpm test; then
   echo -e "\n✅ ALL TESTS PASSED"
 else
   echo -e "\n❌ SOME TESTS FAILED"

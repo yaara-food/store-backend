@@ -81,7 +81,7 @@ describe("POST /auth/category/:add_or_id", () => {
 
         expect(res.status).toBe(201);
         expect(res.body).toHaveProperty("id");
-        expect(res.body).toHaveProperty("handle", title.replace(/\s+/g, "-"));
+        expect(res.body).toHaveProperty("handle", title_to_handle(title));
         expect(res.body).toHaveProperty("position", 1);
     });
 
@@ -103,7 +103,7 @@ describe("POST /auth/category/:add_or_id", () => {
 
         expect(res.status).toBe(200);
         expect(res.body).toHaveProperty("id", existing.id);
-        expect(res.body).toHaveProperty("handle", updated_title.replace(/\s+/g, "-"));
+        expect(res.body).toHaveProperty("handle", title_to_handle(updated_title));
     });
 
     it("should return 404 when editing non-existing category", async () => {
