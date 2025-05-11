@@ -78,23 +78,24 @@ BLOB_READ_WRITE_TOKEN=your-vercel-blob-token
 # JWT secret for authentication
 JWT_SECRET=your-secret-key
 
-# Email credentials (for Gmail or SMTP)
-GMAIL_USER=your-gmail@example.com
-MAILERSEND_SMTP_USER=your-smtp-username
-MAILERSEND_SMTP_PASS=your-smtp-password
-
-# WhatsApp via CallMeBot
-CALLMEBOT_API_KEY=your-callmebot-api-key
-WHATSAPP_NUMBER=+1234567890
-SEND_EMAIL_WHATSAPP=true
-
 # CORS and external frontend origin
 FRONT_URL=https://your-store.vercel.app
 ALLOWED_ORIGINS=https://your-store.vercel.app,http://localhost:3000
 
-# Store info
+SEND_EMAIL_WHATSAPP=false
+
+# Email credentials (for SMTP)
+GMAIL_USER=your-gmail@example.com
+MAILERSEND_SMTP_USER=your-smtp-username
+MAILERSEND_SMTP_PASS=your-smtp-password
 STORE_NAME=Your Store Name
 STORE_EMAIL=info@example.com
+
+# WhatsApp via CallMeBot
+CALLMEBOT_API_KEY=your-callmebot-api-key
+WHATSAPP_NUMBER=+1234567890
+
+
 ```
 
 

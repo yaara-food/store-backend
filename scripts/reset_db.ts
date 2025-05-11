@@ -4,7 +4,7 @@ import "reflect-metadata";
 
 // @ts-ignore
 import mockData from "./data/mock_products.json";
-import {DB} from "../src/db";
+import {DB} from "../src/lib/db";
 
 async function resetTables() {
     const em = DB.manager;

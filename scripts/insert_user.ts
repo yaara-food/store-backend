@@ -5,8 +5,8 @@ import dotenv from "dotenv";
 
 dotenv.config();
 import bcrypt from 'bcryptjs';
-import {User} from "../src/entities";
-import {DB} from "../src/db";
+import {User} from "../src/lib/entities";
+import {DB} from "../src/lib/db";
 
 export async function CreateUser(
     username: string,

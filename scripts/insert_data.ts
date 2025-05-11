@@ -4,9 +4,9 @@ import "reflect-metadata";
 
 import mockData from "./data/real_data.json";
 import image_urls from "./data/uploaded_urls.json";
-import {Product, ProductImage, Category} from "../src/entities";
-import {DB} from "../src/db";
-import {title_to_handle} from "../src/util";
+import {Product, ProductImage, Category} from "../src/lib/entities";
+import {DB} from "../src/lib/db";
+import {title_to_handle} from "../src/lib/util";
 
 
 const random_image = true
@@ -74,3 +74,7 @@ DB.initialize()
         console.error("❌ Failed to run seed script", err);
         process.exit(1);
     });
+
+
+//(for test) SEED=true pnpm tsx scripts/insert_data.ts
+//pnpm tsx scripts/insert_data.ts

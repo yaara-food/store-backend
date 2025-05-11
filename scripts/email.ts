@@ -1,8 +1,8 @@
 import nodemailer from "nodemailer";
 import dotenv from "dotenv";
-import {Order} from "../src/entities";
-import {generateOrderEmailHtml} from "../src/service";
-import {email_data} from "../src/util";
+import {Order} from "../src/lib/entities";
+import {generateOrderEmailHtml} from "../src/lib/service";
+import {email_data} from "../src/lib/util";
 
 dotenv.config();
 

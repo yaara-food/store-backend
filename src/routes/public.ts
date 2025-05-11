@@ -1,20 +1,24 @@
 import {Request, Response, Router} from "express";
-import bcrypt from 'bcryptjs';
+import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
-import {DB} from "../db";
-import {Product, Category, OrderItem, Order, User} from "../entities";
-import {sendAdminWhatsApp, sendOrderConfirmationEmail} from "../service";
-import {title_to_handle} from "../util";
+import {DB} from "../lib/db";
+import {Product, Category, OrderItem, Order, User} from "../lib/entities";
+import {
+    sendAdminWhatsApp,
+    sendOrderConfirmationEmail,
+    withErrorHandler,
+} from "../lib/service";
 
 const router = Router();
 
-router.post("/checkout", async (req: Request, res: Response) => {
-    try {
+router.post(
+    "/checkout",
+    withErrorHandler(async (req: Request, res: Response) => {
         const {name, email, phone, cart} = req.body;
 
-        if (!cart || !Array.isArray(cart.lines)) {
-            return res.status(400).json({error: "Invalid cart"});
+        if (!cart || !Array.isArray(cart.lines) || cart.lines.length === 0) {
+            return res.status(400).json({ error: "Invalid cart" });
         }
 
         const order = new Order();
@@ -38,19 +42,19 @@ router.post("/checkout", async (req: Request, res: Response) => {
         });
 
         const savedOrder = await DB.getRepository(Order).save(order);
-        if (process.env.SEND_EMAIL_WHATSAPP === 'true') {
+
+        if (process.env.SEND_EMAIL_WHATSAPP === "true") {
             await sendOrderConfirmationEmail(savedOrder);
-            await sendAdminWhatsApp(savedOrder.id)
+            await sendAdminWhatsApp(savedOrder.id);
         }
 
         res.status(201).json(savedOrder);
-    } catch (err) {
-        console.error("❌ Failed to save order:", err);
-        res.status(500).json({error: "Internal Server Error"});
-    }
-});
-router.get("/data", async (req: Request, res: Response) => {
-    try {
+    }),
+);
+
+router.get(
+    "/data",
+    withErrorHandler(async (req: Request, res: Response) => {
         const [products, categories] = await Promise.all([
             DB.getRepository(Product).find({
                 relations: ["images"],
@@ -62,10 +66,8 @@ router.get("/data", async (req: Request, res: Response) => {
         ]);
 
         const categories_map_id_handle = Object.fromEntries(
-            categories.map((c) => [c.id, c.handle])
+            categories.map((c) => [c.id, c.handle]),
         ) as Record<number, string>;
-
-        // category: title_to_handle(categories_map_id_handle[product.category_id]),
 
         const formatted_products = products.map((product: any) => ({
             ...product,
@@ -74,31 +76,32 @@ router.get("/data", async (req: Request, res: Response) => {
         }));
 
         res.json({products: formatted_products, categories});
-    } catch (err) {
-        console.error("❌ Failed to fetch data:", err);
-        res.status(500).json({error: "Internal Server Error"});
-    }
-});
+    }),
+);
 
-router.post("/login", async (req, res) => {
-    const {username, password} = req.body;
+router.post(
+    "/login",
+    withErrorHandler(async (req, res) => {
+        const {username, password} = req.body;
 
-    const user = await DB.getRepository(User).findOneBy({username});
-    if (!user) {
-        return res.status(401).json({error: "Invalid credentials"});
-    }
+        const user = await DB.getRepository(User).findOneBy({username});
+        if (!user) {
+            return res.status(401).json({error: "Invalid credentials"});
+        }
 
-    const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) {
-        return res.status(401).json({error: "Invalid credentials"});
-    }
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (!isMatch) {
+            return res.status(401).json({error: "Invalid credentials"});
+        }
 
-    const token = jwt.sign(
-        {userId: user.id, username: user.username},
-        process.env.JWT_SECRET!,
-        {expiresIn: "8d"},
-    );
+        const token = jwt.sign(
+            {userId: user.id, username: user.username},
+            process.env.JWT_SECRET!,
+            {expiresIn: "8d"},
+        );
 
-    res.json({message: "Login successful", token});
-});
+        res.json({message: "Login successful", token});
+    }),
+);
+
 export default router;

@@ -3,6 +3,19 @@ export function title_to_handle(title: string): string {
     return handle;
 }
 
+export class NotFoundError extends Error {
+    constructor(message: string) {
+        super(message);
+        this.name = "NotFoundError";
+    }
+}
+
+export enum ModelType {
+    category = "category",
+    order = "order",
+    product = "product",
+}
+
 export enum OrderStatus {
     NEW = "new",
     READY = "ready",

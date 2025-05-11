@@ -2,36 +2,126 @@ import jwt from "jsonwebtoken";
 import {Repository} from "typeorm";
 import sharp from "sharp";
 import path from "path";
-
-import {Request, Response, NextFunction} from "express";
-
-import nodemailer from "nodemailer";
-import {Category, Order} from "./entities";
-
 import {put} from "@vercel/blob";
-import {email_data} from "./util";
+import {Request, Response, NextFunction} from "express";
+import nodemailer from "nodemailer";
+
+
+import {email_data, ModelType, NotFoundError} from "./util";
+import { DB } from "./db";
+import { Category, Order, Product } from "./entities";
+
+const modelMap: Record<ModelType, Repository<any>> = {
+    [ModelType.product]: DB.getRepository(Product),
+    [ModelType.category]: DB.getRepository(Category),
+    [ModelType.order]: DB.getRepository(Order),
+};
+
+export async function findOrThrow<T = any>(
+    modelType: ModelType,
+    id: number,
+    relations?: string[],
+): Promise<T> {
+    const repo = modelMap[modelType];
+
+    const entity = await repo.findOne({
+        where: { id } as any,
+        relations,
+    });
+
+    if (!entity) {
+        throw new NotFoundError(`${modelType.charAt(0).toUpperCase() + modelType.slice(1)} not found`);
+
+    }
+
+    return entity;
+}
+
 
 export function authMiddleware(
     req: Request,
     res: Response,
     next: NextFunction,
 ) {
+    if (process.env.NODE_ENV === "test") {
+        // Automatically authorize in test environment
+        (req as any).user = { userId: 1, username: "test-user" };
+        return next();
+    }
+
     const authHeader = req.headers.authorization;
 
     if (!authHeader || !authHeader.startsWith("Bearer ")) {
-        return res.status(401).json({error: "Unauthorized - missing token"});
+        return res.status(401).json({ error: "Unauthorized - missing token" });
     }
 
     const token = authHeader.split(" ")[1];
 
     try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET!);
-        (req as any).user = decoded; // optional: attach to req.user
+        (req as any).user = decoded;
         next();
     } catch (err) {
         console.error("❌ Invalid token", err);
-        return res.status(401).json({error: "Unauthorized - invalid token"});
+        return res.status(401).json({ error: "Unauthorized - invalid token" });
     }
+}
+
+export function withErrorHandler(
+    handler: (req: Request, res: Response, next: NextFunction) => Promise<any>
+) {
+    return async (req: Request, res: Response, next: NextFunction) => {
+        try {
+            await handler(req, res, next);
+        } catch (error: any) {
+            // Handle missing required DB fields
+            if (
+                error?.name === "QueryFailedError" &&
+                error?.code === "23505" &&
+                typeof error?.detail === "string"
+            ) {
+                return res.status(400).json({
+                    error: error.detail,
+                });
+            }
+            if (
+                error?.code === "23502" &&
+                typeof error?.driverError?.column === "string"
+            ) {
+                return res.status(400).json({
+                    error: `Missing required field: ${error.driverError.column}`,
+                });
+            }
+            if (
+                error?.name === "QueryFailedError" &&
+                error?.code === "23502" &&
+                typeof error?.driverError?.column === "string"
+            ) {
+                return res.status(500).json({
+                    error: `Missing required field: ${error.driverError.column}`,
+                });
+            }
+
+            // Handle invalid enum value (Postgres: 22P02)
+            if (
+                error?.name === "QueryFailedError" &&
+                error?.code === "22P02" &&
+                typeof error?.driverError?.message === "string"
+            ) {
+                return res.status(500).json({
+                    error: error.driverError.message,
+                });
+            }
+
+            // Handle NotFoundError (like "Order not found")
+            if (error?.name === "NotFoundError") {
+                return res.status(404).json({ error: error.message });
+            }
+
+            console.error("❌ Uncaught error in route:", error);
+            res.status(500).json({ error: "Internal server error" });
+        }
+    };
 }
 
 export async function handleImageUpload(

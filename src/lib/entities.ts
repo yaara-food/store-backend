@@ -23,7 +23,7 @@ export class Category {
     @Column("varchar", {unique: true, nullable: false})
     handle!: string;
 
-    @Column("int", {nullable: false})
+    @Column("int", {nullable: false, default: 0})
     position!: number;
 
     @Column({type: "timestamp", default: () => "CURRENT_TIMESTAMP"})
@@ -43,32 +43,32 @@ export class Product {
     @PrimaryGeneratedColumn()
     id!: number;
 
-    @Column("varchar", { unique: true, nullable: false })
+    @Column("varchar", {unique: true, nullable: false})
     handle!: string;
 
     @ManyToOne(() => Category, (category) => category.products, {
         onDelete: "CASCADE",
         nullable: false,
     })
-    @JoinColumn({ name: "category_id" })
+    @JoinColumn({name: "category_id"})
     category!: Category;
 
     @Column("int")
     category_id!: number;
 
-    @Column("boolean", { nullable: false })
+    @Column("boolean", {nullable: false})
     available!: boolean;
 
-    @Column("varchar", { nullable: false })
+    @Column("varchar", {nullable: false})
     title!: string;
 
-    @Column("text", { nullable: false })
+    @Column("text", {nullable: false})
     description!: string;
 
-    @Column("numeric", { nullable: false })
+    @Column("numeric", {nullable: false})
     price!: number;
 
-    @Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })
+    @Column({type: "timestamp", default: () => "CURRENT_TIMESTAMP"})
     updatedAt!: Date;
 
     @OneToMany(() => ProductImage, (image) => image.product, {
@@ -85,17 +85,17 @@ export class ProductImage {
     @PrimaryGeneratedColumn()
     id!: number;
 
-    @Column("varchar", { nullable: false })
+    @Column("varchar", {nullable: false})
     url!: string;
 
-    @Column("varchar", { nullable: false })
+    @Column("varchar", {nullable: false})
     altText!: string;
 
     @ManyToOne(() => Product, (product) => product.images, {
         onDelete: "CASCADE",
         nullable: false,
     })
-    @JoinColumn({ name: "product_id" })
+    @JoinColumn({name: "product_id"})
     product!: Product;
 }
 
