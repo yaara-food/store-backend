@@ -69,55 +69,52 @@ router.get(
 router.post(
     "/product/:add_or_id",
     withErrorHandler(async (req: Request, res: Response) => {
-      const { add_or_id } = req.params;
-      const body = req.body;
-      body.handle = title_to_handle(body.title);
-      body.updatedAt = new Date();
+        const { add_or_id } = req.params;
+        const body = req.body;
+        body.handle = title_to_handle(body.title);
+        body.updatedAt = new Date();
 
-      const { images, ...productData } = body;
+        const { images, ...productData } = body;
 
-      if (!Array.isArray(images) || images.length === 0) {
-        return res.status(400).json({ error: "Product must have at least one image" });
-      }
+        const queryRunner = DB.createQueryRunner();
+        await queryRunner.connect();
+        await queryRunner.startTransaction();
 
-      const queryRunner = DB.createQueryRunner();
-      await queryRunner.connect();
-      await queryRunner.startTransaction();
+        try {
+            const productRepo = queryRunner.manager.getRepository(Product);
+            const imageRepo = queryRunner.manager.getRepository(ProductImage);
 
-      try {
-        const productRepo = queryRunner.manager.getRepository(Product);
-        const imageRepo = queryRunner.manager.getRepository(ProductImage);
+            let product;
 
-        let product;
+            if (add_or_id === "add") {
+                product = productRepo.create({ ...productData, images });
+                product = await productRepo.save(product);
+            } else {
+                product = await findOrThrow(ModelType.product, Number(add_or_id), ["images"]);
+                Object.assign(product, productData);
 
-        if (add_or_id === "add") {
-          product = productRepo.create(productData);
-          product = await productRepo.save(product);
-        } else {
-          product = await findOrThrow(ModelType.product, Number(add_or_id), ["images"]);
-          Object.assign(product, productData);
-          product = await productRepo.save(product);
-          await imageRepo.delete({ product });
+                // Important: delete existing images BEFORE setting new ones
+                await imageRepo.delete({ product });
+
+                const newImages = images.map((img) =>
+                    imageRepo.create({ product, url: img.url, altText: img.altText })
+                );
+
+                // Set images BEFORE save so `beforeUpdate` sees it
+                product.images = newImages;
+
+                product = await productRepo.save(product);
+            }
+
+            await queryRunner.commitTransaction();
+            return res.status(add_or_id === "add" ? 201 : 200).json({ ...product, images });
+        } catch (error) {
+            await queryRunner.rollbackTransaction();
+            throw error;
+        } finally {
+            await queryRunner.release();
         }
-
-        const imageEntities = images.map((img) =>
-            imageRepo.create({
-              product,
-              url: img.url,
-              altText: img.altText,
-            }),
-        );
-        await imageRepo.save(imageEntities);
-        await queryRunner.commitTransaction();
-
-        return res.status(add_or_id === "add" ? 201 : 200).json({ ...product, images });
-      } catch (error) {
-        await queryRunner.rollbackTransaction();
-        throw error;
-      } finally {
-        await queryRunner.release();
-      }
-    }),
+    })
 );
 
 router.post(

@@ -8,8 +8,8 @@ import nodemailer from "nodemailer";
 
 
 import {email_data, ModelType, NotFoundError} from "./util";
-import { DB } from "./db";
-import { Category, Order, Product } from "./entities";
+import {DB} from "./db";
+import {Category, Order, Product} from "./entities";
 
 const modelMap: Record<ModelType, Repository<any>> = {
     [ModelType.product]: DB.getRepository(Product),
@@ -25,7 +25,7 @@ export async function findOrThrow<T = any>(
     const repo = modelMap[modelType];
 
     const entity = await repo.findOne({
-        where: { id } as any,
+        where: {id} as any,
         relations,
     });
 
@@ -45,14 +45,13 @@ export function authMiddleware(
 ) {
     if (process.env.NODE_ENV === "test") {
         // Automatically authorize in test environment
-        (req as any).user = { userId: 1, username: "test-user" };
         return next();
     }
 
     const authHeader = req.headers.authorization;
 
     if (!authHeader || !authHeader.startsWith("Bearer ")) {
-        return res.status(401).json({ error: "Unauthorized - missing token" });
+        return res.status(401).json({error: "Unauthorized - missing token"});
     }
 
     const token = authHeader.split(" ")[1];
@@ -63,7 +62,7 @@ export function authMiddleware(
         next();
     } catch (err) {
         console.error("❌ Invalid token", err);
-        return res.status(401).json({ error: "Unauthorized - invalid token" });
+        return res.status(401).json({error: "Unauthorized - invalid token"});
     }
 }
 
@@ -74,7 +73,12 @@ export function withErrorHandler(
         try {
             await handler(req, res, next);
         } catch (error: any) {
-            // Handle missing required DB fields
+            if (
+                error instanceof Error &&
+                error.message === "no image"
+            ) {
+                return res.status(400).json({error: "Product must have at least one image"});
+            }
             if (
                 error?.name === "QueryFailedError" &&
                 error?.code === "23505" &&
@@ -115,14 +119,15 @@ export function withErrorHandler(
 
             // Handle NotFoundError (like "Order not found")
             if (error?.name === "NotFoundError") {
-                return res.status(404).json({ error: error.message });
+                return res.status(404).json({error: error.message});
             }
 
             console.error("❌ Uncaught error in route:", error);
-            res.status(500).json({ error: "Internal server error" });
+            res.status(500).json({error: "Internal server error"});
         }
     };
 }
+
 
 export async function handleImageUpload(
     req: Request,

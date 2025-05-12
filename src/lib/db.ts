@@ -9,6 +9,7 @@ import {
     User,
 } from "./entities";
 import {Request, Response, NextFunction} from "express";
+import {ProductSubscriber} from "./subscribers";
 
 dotenv.config();
 const entities = [Product, Category, ProductImage, Order, OrderItem, User]
@@ -27,6 +28,8 @@ const options: DataSourceOptions = isSeed || isTest
         synchronize: true,
         logging: false,
         entities,
+        subscribers: [ProductSubscriber],
+
     } as DataSourceOptions
     : {
         type: "postgres",
@@ -38,6 +41,8 @@ const options: DataSourceOptions = isSeed || isTest
         synchronize: true,
         logging: false,
         entities,
+        subscribers: [ProductSubscriber],
+
     } as DataSourceOptions;
 
 export const DB = new DataSource(options);
