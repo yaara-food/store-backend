@@ -30,7 +30,6 @@ describe("POST /auth/product/:add_or_id", () => {
     let createdProductId: number;
 
 
-
     it("should create a new product", async () => {
         const productData = await generateFakeProduct();
 
@@ -68,7 +67,19 @@ describe("POST /auth/product/:add_or_id", () => {
             .send(productData);
 
         expect(res.status).toBe(400);
-        expect(res.body.error).toMatch(/Product must have at least one image/i);
+        expect(res.body.error).toMatch(/Missing required field: images/i);
+    });
+
+    it("should return 400 if title missing", async () => {
+        const productData = await generateFakeProduct();
+        delete productData.title;
+
+        const res = await request(app)
+            .post("/auth/product/add")
+            .send(productData);
+
+        expect(res.status).toBe(400);
+        expect(res.body.error).toMatch(/handle|title/i);
     });
 });
 
@@ -106,6 +117,14 @@ describe("POST /auth/category/:add_or_id", () => {
         expect(res.status).toBe(200);
         expect(res.body).toHaveProperty("id", existing.id);
         expect(res.body).toHaveProperty("handle", title_to_handle(updated_title));
+    });
+    it("should return 400 if title missing", async () => {
+        const res = await request(app)
+            .post("/auth/category/add")
+            .send({position: 2});
+
+        expect(res.status).toBe(400);
+        expect(res.body.error).toMatch(/Missing required field: title/i);
     });
 
     it("should return 404 when editing non-existing category", async () => {
@@ -158,9 +177,9 @@ describe("DELETE /auth/:model/:id", () => {
         // Now delete it
         const res = await request(app).delete(`/auth/product/${productId}`);
         expect(res.status).toBe(200);
-        expect(res.body).toEqual({ success: true });
+        expect(res.body).toEqual({success: true});
 
-        const check = await DB.getRepository(Product).findOneBy({ id: productId });
+        const check = await DB.getRepository(Product).findOneBy({id: productId});
         expect(check).toBeNull();
     });
 

@@ -9,7 +9,7 @@ import {
     User,
 } from "./entities";
 import {Request, Response, NextFunction} from "express";
-import {ProductSubscriber} from "./subscribers";
+import {OrderSubscriber, ProductSubscriber} from "./subscribers";
 
 dotenv.config();
 const entities = [Product, Category, ProductImage, Order, OrderItem, User]
@@ -28,20 +28,20 @@ const options: DataSourceOptions = isSeed || isTest
         synchronize: true,
         logging: false,
         entities,
-        subscribers: [ProductSubscriber],
+        subscribers: [ProductSubscriber, OrderSubscriber],
 
     } as DataSourceOptions
     : {
         type: "postgres",
         host: process.env.DB_HOST,
-        port: parseInt(process.env.DB_PORT || "5432"),
+        port: parseInt(process.env.DB_PORT),
         username: process.env.DB_USER,
         password: process.env.DB_PASSWORD,
         database: process.env.DB_NAME,
         synchronize: true,
         logging: false,
         entities,
-        subscribers: [ProductSubscriber],
+        subscribers: [ProductSubscriber, OrderSubscriber],
 
     } as DataSourceOptions;
 

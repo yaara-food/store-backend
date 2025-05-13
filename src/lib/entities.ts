@@ -11,8 +11,7 @@ import {
 import {OrderStatus} from "./util";
 
 @Entity()
-@Check(`"title" <> ''`)
-@Check(`"handle" <> ''`)
+@Check(`("title" <> '') AND ("handle" <> '')`)
 export class Category {
     @PrimaryGeneratedColumn()
     id!: number;
@@ -36,12 +35,14 @@ export class Category {
 }
 
 @Entity()
-@Check(`"handle" <> ''`)
-@Check(`"title" <> ''`)
+@Check(`("title" <> '') AND ("handle" <> '')`)
 @Check(`"description" <> ''`)
 export class Product {
     @PrimaryGeneratedColumn()
     id!: number;
+
+    @Column("varchar", {nullable: false})
+    title!: string;
 
     @Column("varchar", {unique: true, nullable: false})
     handle!: string;
@@ -59,8 +60,6 @@ export class Product {
     @Column("boolean", {nullable: false})
     available!: boolean;
 
-    @Column("varchar", {nullable: false})
-    title!: string;
 
     @Column("text", {nullable: false})
     description!: string;

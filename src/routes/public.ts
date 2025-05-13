@@ -17,29 +17,28 @@ router.post(
     withErrorHandler(async (req: Request, res: Response) => {
         const {name, email, phone, cart} = req.body;
 
-        if (!cart || !Array.isArray(cart.lines) || cart.lines.length === 0) {
-            return res.status(400).json({ error: "Invalid cart" });
-        }
-
         const order = new Order();
         order.name = name;
         order.email = email;
         order.phone = phone;
-        order.totalQuantity = cart.totalQuantity;
-        order.cost = cart.cost;
+        if (cart && Object.keys(cart).length !== 0) {
 
-        order.items = cart.lines.map((item: any) => {
-            const orderItem = new OrderItem();
-            orderItem.productId = item.productId;
-            orderItem.handle = item.handle;
-            orderItem.title = item.title;
-            orderItem.imageUrl = item.imageUrl;
-            orderItem.imageAlt = item.imageAlt;
-            orderItem.quantity = item.quantity;
-            orderItem.unitAmount = item.unitAmount;
-            orderItem.totalAmount = item.totalAmount;
-            return orderItem;
-        });
+            order.totalQuantity = cart.totalQuantity;
+            order.cost = cart.cost;
+
+            order.items = cart.lines.map((item: any) => {
+                const orderItem = new OrderItem();
+                orderItem.productId = item.productId;
+                orderItem.handle = item.handle;
+                orderItem.title = item.title;
+                orderItem.imageUrl = item.imageUrl;
+                orderItem.imageAlt = item.imageAlt;
+                orderItem.quantity = item.quantity;
+                orderItem.unitAmount = item.unitAmount;
+                orderItem.totalAmount = item.totalAmount;
+                return orderItem;
+            });
+        }
 
         const savedOrder = await DB.getRepository(Order).save(order);
 

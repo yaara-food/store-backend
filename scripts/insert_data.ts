@@ -37,7 +37,19 @@ async function insertData() {
         return shuffled.slice(0, count);
     };
     const shuffled_products = [...mockData.products].sort(() => 0.5 - Math.random());
+
     for (const p of shuffled_products) {
+        const randomImages = random_image
+            ? getRandomImages(Math.floor(Math.random() * 5) + 1)
+            : [image_soon];
+
+        const productImages = randomImages.map((url) =>
+            em.create(ProductImage, {
+                url,
+                altText: p.title,
+            })
+        );
+
         const product = em.create(Product, {
             handle: title_to_handle(p.title),
             category_id: categories_map_title_id[p.category],
@@ -45,19 +57,10 @@ async function insertData() {
             title: p.title,
             description: p.description,
             price: p.price,
+            images: productImages, // ✅ include images directly
         });
 
-        const savedProduct = await em.save(product);
-
-        const randomImages = random_image ? getRandomImages(Math.floor(Math.random() * 5) + 1) : [image_soon];
-        for (const url of randomImages) {
-            const image = em.create(ProductImage, {
-                product: savedProduct,
-                url,
-                altText: product.title,
-            });
-            await em.save(image);
-        }
+        await em.save(product); // ✅ saves product and its images in one transaction
     }
 
     console.log("✅ Mock data inserted successfully.");
@@ -65,7 +68,6 @@ async function insertData() {
 
 DB.initialize()
     .then(async () => {
-        // await resetTables();
         await insertData();
         process.exit();
 

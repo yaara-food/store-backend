@@ -73,11 +73,18 @@ export function withErrorHandler(
         try {
             await handler(req, res, next);
         } catch (error: any) {
+
             if (
                 error instanceof Error &&
                 error.message === "no image"
             ) {
-                return res.status(400).json({error: "Product must have at least one image"});
+                return res.status(400).json({error: "Missing required field: images"});
+            }
+            if (
+                error instanceof Error &&
+                error.message === "no cart items"
+            ) {
+                return res.status(400).json({error: "Order must contain at least one item"});
             }
             if (
                 error?.name === "QueryFailedError" &&

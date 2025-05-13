@@ -51,7 +51,7 @@ describe("POST /checkout", () => {
         });
 
         expect(res.status).toBe(400);
-        expect(res.body.error).toBe("Invalid cart");
+        expect(res.body.error).toBe("Order must contain at least one item");
     });
 
     it("should fail if required fields like name are missing", async () => {
@@ -101,7 +101,7 @@ describe("POST /checkout", () => {
         });
 
         expect(res.status).toBe(400);
-        expect(res.body.error).toBe("Invalid cart");
+        expect(res.body.error).toBe("Order must contain at least one item");
     });
 });
 
