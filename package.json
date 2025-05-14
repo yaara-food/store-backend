@@ -10,7 +10,8 @@
     "build": "tsc",
     "start": "node dist/index.js",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "codegen:recored": "NODE_ENV=test SEED=true PORT=4010 tsx src/dev.ts"
   },
   "dependencies": {
     "@sendgrid/mail": "^8.1.5",
