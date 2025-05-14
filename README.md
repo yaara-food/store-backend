@@ -38,7 +38,6 @@ To contribute, fork the repository and submit a pull request with your enhanceme
 
 ---
 
-
 ## ✨ Features
 
 - 🔄 **CRUD operations** for categories, products, orders, and images
@@ -97,7 +96,6 @@ WHATSAPP_NUMBER=+1234567890
 
 
 ```
-
 
 ## 📄 License
 

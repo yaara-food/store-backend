@@ -1,32 +1,32 @@
 export function title_to_handle(title: string): string {
-    const handle = title.trim().replace(/\s+/g, "-"); // Replace spaces with dash
-    return handle;
+  const handle = title.trim().replace(/\s+/g, "-"); // Replace spaces with dash
+  return handle;
 }
 
 export class NotFoundError extends Error {
-    constructor(message: string) {
-        super(message);
-        this.name = "NotFoundError";
-    }
+  constructor(message: string) {
+    super(message);
+    this.name = "NotFoundError";
+  }
 }
 
 export enum ModelType {
-    category = "category",
-    order = "order",
-    product = "product",
+  category = "category",
+  order = "order",
+  product = "product",
 }
 
 export enum OrderStatus {
-    NEW = "new",
-    READY = "ready",
-    DONE = "done",
-    CANCELED = "canceled",
+  NEW = "new",
+  READY = "ready",
+  DONE = "done",
+  CANCELED = "canceled",
 }
 
 export const email_data = {
-    subjectPrefix: "אישור הזמנה - מס'",
-    greeting: "שלום",
-    confirmation: "ההזמנה שלך נקלטה.",
-    orderNumberLabel: "מספר הזמנה:",
-    totalLabel: `סה"כ לתשלום: ₪`,
+  subjectPrefix: "אישור הזמנה - מס'",
+  greeting: "שלום",
+  confirmation: "ההזמנה שלך נקלטה.",
+  orderNumberLabel: "מספר הזמנה:",
+  totalLabel: `סה"כ לתשלום: ₪`,
 };
