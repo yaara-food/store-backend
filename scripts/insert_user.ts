@@ -42,3 +42,4 @@ CreateUser(username, email, password).catch((err) => {
   console.error(err);
   process.exit(1);
 });
+//SEED=true pnpm tsx scripts/insert_user.ts
