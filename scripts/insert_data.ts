@@ -8,9 +8,9 @@ import { Product, ProductImage, Category } from "../src/lib/entities";
 import { DB } from "../src/lib/db";
 import { title_to_handle } from "../src/lib/util";
 
-const random_image = true;
+const random_image = false;
 const image_soon =
-  "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/yaara_soon.jpeg";
+  "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon%20%281%29.png";
 
 async function insertData() {
   const em = DB.manager;
@@ -45,10 +45,11 @@ async function insertData() {
       ? getRandomImages(Math.floor(Math.random() * 5) + 1)
       : [image_soon];
 
-    const productImages = randomImages.map((url) =>
+    const productImages = randomImages.map((url, position) =>
       em.create(ProductImage, {
         url,
         altText: p.title,
+        position,
       }),
     );
 
@@ -59,10 +60,10 @@ async function insertData() {
       title: p.title,
       description: p.description,
       price: p.price,
-      images: productImages, // ✅ include images directly
+      images: productImages,
     });
 
-    await em.save(product); // ✅ saves product and its images in one transaction
+    await em.save(product);
   }
 
   console.log("✅ Mock data inserted successfully.");
@@ -77,6 +78,5 @@ DB.initialize()
     console.error("❌ Failed to run seed script", err);
     process.exit(1);
   });
-
 //(for test) SEED=true pnpm tsx scripts/insert_data.ts
 //pnpm tsx scripts/insert_data.ts

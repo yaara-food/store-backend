@@ -89,6 +89,9 @@ export class ProductImage {
   @Column("varchar", { nullable: false })
   altText!: string;
 
+  @Column("int", { nullable: false })
+  position!: number;
+
   @ManyToOne(() => Product, (product) => product.images, {
     onDelete: "CASCADE",
     nullable: false,

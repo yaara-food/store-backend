@@ -56,7 +56,12 @@ router.get(
     const [products, categories] = await Promise.all([
       DB.getRepository(Product).find({
         relations: ["images"],
-        order: { updatedAt: "DESC" },
+        order: {
+          updatedAt: "DESC",
+          images: {
+            position: "ASC",
+          },
+        },
       }),
       DB.getRepository(Category).find({
         order: { position: "ASC" },
