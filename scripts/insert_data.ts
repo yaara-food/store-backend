@@ -8,7 +8,7 @@ import { Product, ProductImage, Category } from "../src/lib/entities";
 import { DB } from "../src/lib/db";
 import { title_to_handle } from "../src/lib/util";
 
-const random_image = false;
+const random_image = true;
 const image_soon =
   "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon%20%281%29.png";
 
