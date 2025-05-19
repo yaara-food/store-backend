@@ -1,4 +1,4 @@
-// tests/setup.ts
+import { beforeAll, beforeEach } from "vitest";
 import "reflect-metadata";
 import { DB } from "../src/lib/db";
 

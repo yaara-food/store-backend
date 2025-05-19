@@ -4,7 +4,7 @@ import {
   InsertEvent,
   UpdateEvent,
 } from "typeorm";
-import { Order, Product } from "../lib/entities";
+import { Order, Product } from "./entities";
 
 @EventSubscriber()
 export class ProductSubscriber implements EntitySubscriberInterface<Product> {

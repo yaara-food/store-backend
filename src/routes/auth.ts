@@ -86,17 +86,17 @@ router.post(
             const productRepo = queryRunner.manager.getRepository(Product);
             const imageRepo = queryRunner.manager.getRepository(ProductImage);
 
-            let product;
+            let product: Product;
 
             if (add_or_id === "add") {
-                const newImages = (images || []).map((img, position) =>
+                const newImages = (images || []).map((img: ProductImage, position: number) =>
                     imageRepo.create({
                         ...img,
                         position,
                     }),
                 );
 
-                product = productRepo.create({...productData, images: newImages});
+                product = productRepo.create({ ...(productData as Partial<Product>), images: newImages });
                 product = await productRepo.save(product);
             } else {
                 product = await findOrThrow(ModelType.product, Number(add_or_id), [
@@ -106,12 +106,12 @@ router.post(
 
                 await imageRepo.delete({product});
 
-                product.images = (images || []).map((img, position) =>
+                product.images = (images || []).map((img: ProductImage, position: number) =>
                     imageRepo.create({
-                        product,
                         ...img,
+                        product,
                         position,
-                    }),
+                    })
                 );
                 product = await productRepo.save(product);
             }
@@ -140,18 +140,20 @@ router.post(
         }
 
         const repo = DB.getRepository(Category);
-        let instance;
+        let instance: Category;
 
         if (add_or_id === "add") {
-            instance = repo.create(body);
+            instance = repo.create(body as Category);
         } else {
-            instance = await repo.preload({id: Number(add_or_id), ...body});
-            if (!instance)
+            const loaded = await repo.preload({id: Number(add_or_id), ...body});
+            if (!loaded) {
                 return res.status(404).json({error: "Category not found"});
+            }
+            instance = loaded;
         }
 
         const saved = await repo.save(instance);
-        const final = await handleReorderCategory(repo, saved);
+        const final = await handleReorderCategory(repo, saved as Category);
         return res.status(add_or_id === "add" ? 201 : 200).json(final);
     }),
 );

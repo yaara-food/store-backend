@@ -1,8 +1,9 @@
 import "reflect-metadata";
 import request from "supertest";
+import {describe, it, expect} from "vitest";
 import app from "./test-app";
 import { DB } from "../src/lib/db";
-import { Product, Category, ProductImage } from "../src/lib/entities";
+import { Product, Category } from "../src/lib/entities";
 import { faker } from "@faker-js/faker";
 import { title_to_handle } from "../src/lib/util";
 
@@ -56,7 +57,7 @@ describe("POST /auth/product/:add_or_id", () => {
 
   it("should return 400 if images are missing", async () => {
     const productData = await generateFakeProduct();
-    delete productData.images;
+    delete (productData as any).images;
 
     const res = await request(app).post("/auth/product/add").send(productData);
 
@@ -66,7 +67,7 @@ describe("POST /auth/product/:add_or_id", () => {
 
   it("should return 400 if title missing", async () => {
     const productData = await generateFakeProduct();
-    delete productData.title;
+    delete (productData as any).title;
 
     const res = await request(app).post("/auth/product/add").send(productData);
 

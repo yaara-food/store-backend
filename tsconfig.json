@@ -1,8 +1,9 @@
 {
   "compilerOptions": {
+    "types": ["node", "vitest", "express", "supertest"],
     "target": "ES2021",
     "module": "CommonJS",
-    "rootDir": "src",
+    "rootDir": ".",
     "outDir": "dist",
     "esModuleInterop": true,
     "resolveJsonModule": true,
@@ -12,5 +13,5 @@
     "strict": true,
     "sourceMap": true
   },
-  "include": ["src"]
+  "include": ["src", "scripts", "tests", "**/*.ts"]
 }
