@@ -1,20 +1,21 @@
 {
-  "name": "nextjs-ecommerce-api",
+  "name": "next-ecommerce-backend",
   "version": "1.0.0",
   "private": true,
-  "description": "E-commerce platform built with Next.js, Express, and PostgreSQL",
+  "description": "Backend API for Next.js e-commerce platform",
   "author": "GILAD",
   "license": "MIT",
   "keywords": [
-    "nextjs",
-    "ecommerce",
     "express",
-    "postgres",
-    "typescript"
+    "ecommerce",
+    "typescript",
+    "typeorm",
+    "postgresql",
+    "jwt"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/giladfuchs/nextjs-ecommerce-api"
+    "url": "https://github.com/giladfuchs/next-ecommerce"
   },
   "main": "dist/index.js",
   "scripts": {

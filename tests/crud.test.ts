@@ -1,6 +1,6 @@
 import "reflect-metadata";
 import request from "supertest";
-import {describe, it, expect} from "vitest";
+import { describe, it, expect } from "vitest";
 import app from "./test-app";
 import { DB } from "../src/lib/db";
 import { Product, Category } from "../src/lib/entities";

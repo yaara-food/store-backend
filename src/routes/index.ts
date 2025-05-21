@@ -1,4 +1,4 @@
-import {  Router } from "express";
+import { Router } from "express";
 import authRouter from "./auth";
 import publicRouter from "./public";
 import { authMiddleware } from "../lib/service";

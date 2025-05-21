@@ -4,12 +4,7 @@ A lightweight, production-ready e-commerce backend built with **Express**, **Typ
 Designed to power a Next.js storefront and admin panel — including product management, category structure, cart submission, and order tracking.
 
 ---
-
-## 🌐 Frontend
-
-**🛍️ Repository:** [nextjs-ecommerce](https://github.com/giladfuchs/nextjs-ecommerce)
-
----
+ 
 
 ## 🚀 Getting Started
 
@@ -26,36 +21,42 @@ To run the project locally:
   ```bash
   pnpm dev
   ```
+ 
+---
+### 🧰 Database Setup
+
+This project requires a PostgreSQL database.
+
+You have a few options:
+
+- 📦 **Local PostgreSQL**  
+  Use the provided Docker config at:
+  [`backend/tests/docker-postgres.test.yml`](./tests/docker-postgres.test.yml)
+
+  You can copy and adapt it for your own local setup (the original is intended for testing).
+
+
+- ☁️ **Supabase (Free Option)**  
+  You can create a free hosted database using [supabase.com](https://supabase.com).
 
 ---
 
-## 🤝 Contributing
 
-Contributions are welcome!  
-If you find this project useful, consider giving it a ⭐ on GitHub — it helps others discover it!
+### 🧪 Initial Data
 
-To contribute, fork the repository and submit a pull request with your enhancements or bug fixes.
+After your database is ready, you can insert initial categories and test products.
 
----
+- ▶️ For local development:
 
-## ✨ Features
+```bash
+pnpm tsx scripts/insert_data.ts
+```
 
-- 🔄 **CRUD operations** for categories, products, orders, and images
-- 📤 **Image upload** via [Vercel Blob](https://vercel.com/docs/storage/blob)
-- 🔐 **Token-based authentication** using JWT
-- 📦 **PostgreSQL + TypeORM** for relational data modeling
-- 📩 Optional: **Email integration** via SendGrid + Nodemailer
+- 🧪 For test database (with seed flag):
 
----
-
-## 🧩 Tech Stack
-
-- **Express** + **TypeScript**
-- **TypeORM** with PostgreSQL
-- **Vercel Blob** for image storage
-- **Multer**, **Sharp** for image processing
-- **JWT**, **bcryptjs** for authentication
-- **Dotenv**, **Nodemailer**, **SendGrid**
+```bash
+SEED=true pnpm tsx scripts/insert_data.ts
+```
 
 ---
 
@@ -97,6 +98,4 @@ WHATSAPP_NUMBER=+1234567890
 
 ```
 
-## 📄 License
-
-This project is licensed under the [MIT License](./LICENSE).
+ ---
