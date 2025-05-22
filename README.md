@@ -44,20 +44,34 @@ You have a few options:
 
 ### 🧪 Initial Data
 
-After your database is ready, you can insert initial categories and test products.
+After your database is ready, you can insert initial categories, products, and user using  seed script.
 
-- ▶️ For local development:
 
 ```bash
-pnpm tsx scripts/insert_data.ts
+pnpm tsx scripts/seed.ts
 ```
 
 - 🧪 For test database (with seed flag):
 
 ```bash
-SEED=true pnpm tsx scripts/insert_data.ts
+SEED=true pnpm tsx scripts/seed.ts
 ```
+📄 For more usage examples, see [`scripts/seed.ts`](./scripts/seed.ts).
 
+---
+
+## ✅ Running Tests
+
+The backend uses [Vitest](https://vitest.dev/) and [Supertest](https://github.com/visionmedia/supertest) to test all API routes.
+
+To run the full test suite:
+```bash
+pnpm test
+```
+- Or, use the convenience shell script:
+```bash
+./tests/run_test.sh
+```
 ---
 
 ### 🛠️ Environment Variables
