@@ -12,6 +12,7 @@ import {
 
 const router = Router();
 
+// Submit order using cart data as-is (no price validation against DB)
 router.post(
   "/checkout",
   withErrorHandler(async (req: Request, res: Response) => {
