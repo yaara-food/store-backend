@@ -20,6 +20,7 @@
   "main": "dist/index.js",
   "scripts": {
     "dev": "tsx src/dev.ts",
+    "cron": "tsx scripts/cron.ts",
     "nodemon": "nodemon --exec tsx src/dev.ts",
     "debug": "npx --node-arg=--inspect-brk tsx src/dev.ts",
     "debug:script": "node --inspect-brk node_modules/.bin/tsx scripts/real_data.ts",
