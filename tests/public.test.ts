@@ -6,7 +6,7 @@ import { DB } from "../src/lib/db";
 import { Product } from "../src/lib/entities";
 import { faker } from "@faker-js/faker";
 
-describe.only("POST /checkout", () => {
+describe("POST /checkout", () => {
   it("should submit a valid order and return 201", async () => {
     const products = await DB.getRepository(Product).find({
       relations: ["images"],

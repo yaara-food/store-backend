@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from "express";
+import type { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
 import { Repository } from "typeorm";
 import nodemailer from "nodemailer";
@@ -68,7 +68,6 @@ export function authMiddleware(
 }
 
 export function requireAuthNext(req: any) {
-
   const authHeader = req.headers.get("authorization");
 
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
