@@ -68,6 +68,7 @@ export function authMiddleware(
 }
 
 export function requireAuthNext(req: any) {
+
   const authHeader = req.headers.get("authorization");
 
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
