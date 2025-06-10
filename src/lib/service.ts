@@ -1,8 +1,4 @@
-import express from "express";
-
-type Request = express.Request;
-type Response = express.Response;
-type NextFunction = express.NextFunction;
+import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
 import { Repository } from "typeorm";
 import nodemailer from "nodemailer";
