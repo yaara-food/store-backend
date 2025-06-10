@@ -1,6 +1,4 @@
-import {   NextFunction } from "express";
-const { request: Request } = require('express')
-const { response: Response } = require('express')
+import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
 import { Repository } from "typeorm";
 import nodemailer from "nodemailer";
