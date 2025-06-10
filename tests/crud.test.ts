@@ -147,7 +147,9 @@ describe("DELETE /auth/:model/:id", () => {
         position: 0,
       });
 
-      const res = await request(app).delete(`/auth/category/${created.id}`);
+      const res = await request(app).delete(
+        `/auth/category/${created.id}/delete`,
+      );
       expect(res.status).toBe(200);
       expect(res.body).toEqual({ success: true });
 
@@ -158,7 +160,7 @@ describe("DELETE /auth/:model/:id", () => {
     });
 
     it("should return 404 when category not found", async () => {
-      const res = await request(app).delete("/auth/category/999999");
+      const res = await request(app).delete("/auth/category/999999/delete");
       expect(res.status).toBe(404);
     });
   });
@@ -175,7 +177,7 @@ describe("DELETE /auth/:model/:id", () => {
     const productId = createRes.body.id;
 
     // Now delete it
-    const res = await request(app).delete(`/auth/product/${productId}`);
+    const res = await request(app).delete(`/auth/product/${productId}/delete`);
     expect(res.status).toBe(200);
     expect(res.body).toEqual({ success: true });
 
@@ -184,7 +186,7 @@ describe("DELETE /auth/:model/:id", () => {
   });
 
   it("should return 400 for unsupported model", async () => {
-    const res = await request(app).delete("/auth/unsupported/1");
+    const res = await request(app).delete("/auth/unsupported/1/delete");
     expect(res.status).toBe(400);
     expect(res.body).toHaveProperty("error", "Unsupported model");
   });

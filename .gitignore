@@ -25,6 +25,7 @@ Thumbs.db
 
 # Vercel
 .vercel/
+##git diff --quiet HEAD^ HEAD . ':!backend'
 
 # tsx cache
 .turbo/

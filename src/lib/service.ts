@@ -1,16 +1,19 @@
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
 import { Repository } from "typeorm";
-import sharp from "sharp";
-import path from "path";
-import { put } from "@vercel/blob";
 import nodemailer from "nodemailer";
 
-import { email_data, ModelType, NotFoundError } from "./util";
+import {
+  email_data,
+  HttpError,
+  ModelType,
+  NotFoundError,
+  toHttpError,
+} from "./util";
 import { DB } from "./db";
 import { Category, Order, Product } from "./entities";
 
-const modelMap: Record<ModelType, Repository<any>> = {
+export const modelMap: Record<ModelType, Repository<any>> = {
   [ModelType.product]: DB.getRepository(Product),
   [ModelType.category]: DB.getRepository(Category),
   [ModelType.order]: DB.getRepository(Order),
@@ -64,6 +67,22 @@ export function authMiddleware(
   }
 }
 
+export function requireAuthNext(req: any) {
+  const authHeader = req.headers.get("authorization");
+
+  if (!authHeader || !authHeader.startsWith("Bearer ")) {
+    throw new HttpError(401, "Unauthorized - missing token");
+  }
+
+  const token = authHeader.split(" ")[1];
+
+  try {
+    jwt.verify(token, process.env.JWT_SECRET!);
+  } catch (err) {
+    console.error("❌ Invalid token", err);
+    throw new HttpError(401, "Unauthorized - invalid token");
+  }
+}
 export function withErrorHandler(
   handler: (req: Request, res: Response, next: NextFunction) => Promise<any>,
 ) {
@@ -71,106 +90,10 @@ export function withErrorHandler(
     try {
       await handler(req, res, next);
     } catch (error: any) {
-      if (error instanceof Error && error.message === "no image") {
-        return res
-          .status(400)
-          .json({ error: "Missing required field: images" });
-      }
-      if (error instanceof Error && error.message === "no cart items") {
-        return res
-          .status(400)
-          .json({ error: "Order must contain at least one item" });
-      }
-      if (
-        error?.name === "QueryFailedError" &&
-        error?.code === "23505" &&
-        typeof error?.detail === "string"
-      ) {
-        return res.status(400).json({
-          error: error.detail,
-        });
-      }
-      if (
-        error?.code === "23502" &&
-        typeof error?.driverError?.column === "string"
-      ) {
-        return res.status(400).json({
-          error: `Missing required field: ${error.driverError.column}`,
-        });
-      }
-      if (
-        error?.name === "QueryFailedError" &&
-        error?.code === "23502" &&
-        typeof error?.driverError?.column === "string"
-      ) {
-        return res.status(500).json({
-          error: `Missing required field: ${error.driverError.column}`,
-        });
-      }
-
-      // Handle invalid enum value (Postgres: 22P02)
-      if (
-        error?.name === "QueryFailedError" &&
-        error?.code === "22P02" &&
-        typeof error?.driverError?.message === "string"
-      ) {
-        return res.status(500).json({
-          error: error.driverError.message,
-        });
-      }
-
-      // Handle NotFoundError (like "Order not found")
-      if (error?.name === "NotFoundError") {
-        return res.status(404).json({ error: error.message });
-      }
-
-      console.error("❌ Uncaught error in route:", error);
-      res.status(500).json({ error: "Internal server error" });
+      const err = toHttpError(error);
+      res.status(err.status).json({ error: err.message });
     }
   };
-}
-
-export async function handleImageUpload(
-  req: Request,
-  res: Response,
-): Promise<void> {
-  try {
-    const file = req.file;
-
-    if (!file) {
-      res.status(400).json({ error: "No image uploaded" });
-      return;
-    }
-
-    if (!file.mimetype.startsWith("image/")) {
-      res.status(400).json({ error: "Only image files are allowed" });
-      return;
-    }
-
-    const safeFileName = path.basename(file.originalname);
-
-    const resizedBuffer = await sharp(file.buffer)
-      .resize(500, 500, {
-        fit: "cover",
-        position: "top",
-      })
-      .withMetadata({ orientation: undefined })
-      .jpeg({ quality: 80 })
-      .toBuffer();
-
-    const blob = await put(`products/${safeFileName}`, resizedBuffer, {
-      access: "public",
-      allowOverwrite: true,
-    });
-
-    res.json({ url: blob.url });
-  } catch (err) {
-    console.error("❌ Upload error:", err);
-    res.status(500).json({
-      error: "Upload failed",
-      message: err instanceof Error ? err.message : String(err),
-    });
-  }
 }
 
 export async function handleReorderCategory(
@@ -211,12 +134,12 @@ let transporter: nodemailer.Transporter | null = null;
 function getTransporter() {
   if (!transporter)
     transporter = nodemailer.createTransport({
-      host: "smtp.mailersend.net",
-      port: 587,
+      host: process.env.EMAIL_SMTP_HOST,
+      port: Number(process.env.EMAIL_SMTP_PORT),
       secure: false,
       auth: {
-        user: process.env.MAILERSEND_SMTP_USER,
-        pass: process.env.MAILERSEND_SMTP_PASS,
+        user: process.env.EMAIL_SMTP_USER,
+        pass: process.env.EMAIL_SMTP_PASS,
       },
     });
 
@@ -276,18 +199,17 @@ export async function sendOrderConfirmationEmail(order: Order) {
   try {
     //   Send to customer
     await transporter.sendMail({
-      from: `"${process.env.STORE_NAME}" <${process.env.STORE_EMAIL}>`,
+      from: `"${process.env.EMAIL_FROM_NAME}" <${process.env.EMAIL_FROM_ADDRESS}>`,
       to: order.email,
-      replyTo: process.env.GMAIL_USER, // customer replies to Gmail
+      replyTo: process.env.EMAIL_FROM_ADDRESS, // customer replies to EMAIL_FROM_ADDRESS
       subject,
       text,
       html,
     });
-
-    //  Send to admin (your Gmail)
+    //  Send to admin (EMAIL_FROM_ADDRESS)
     await transporter.sendMail({
-      from: `"${process.env.STORE_NAME}" <${process.env.STORE_EMAIL}>`,
-      to: process.env.GMAIL_USER,
+      from: `"${order.name}" <${process.env.EMAIL_FROM_ADDRESS}>`,
+      to: process.env.EMAIL_FROM_ADDRESS,
       replyTo: order.email, // so you can reply to the customer
       subject,
       text,
@@ -300,7 +222,7 @@ export async function sendOrderConfirmationEmail(order: Order) {
 }
 
 export async function sendAdminWhatsApp(id: number) {
-  const text = `📦 התקבלה הזמנה חדשה באתר YAARASTORE!\n\n🔗 לצפייה בהזמנה: ${process.env.FRONT_URL}/admin/order/${id}`;
+  const text = `📦 התקבלה הזמנה חדשה באתר YAARASTORE!\n\n🔗 לצפייה בהזמנה: ${process.env.STORE_BASE_URL}/admin/order/${id}`;
   const url = `https://api.callmebot.com/whatsapp.php?phone=${process.env.WHATSAPP_NUMBER}&text=${encodeURIComponent(text)}&apikey=${process.env.CALLMEBOT_API_KEY}`;
 
   try {

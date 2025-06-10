@@ -10,7 +10,7 @@ import {
 } from "typeorm";
 import { OrderStatus } from "./util";
 
-@Entity()
+@Entity("category")
 @Check(`("title" <> '') AND ("handle" <> '')`)
 export class Category {
   @PrimaryGeneratedColumn()
@@ -29,12 +29,12 @@ export class Category {
   updatedAt!: Date;
 
   @OneToMany(() => Product, (product) => product.category, {
-    cascade: ["remove"],
+    cascade: true,
   })
   products!: Product[];
 }
 
-@Entity()
+@Entity("product")
 @Check(`("title" <> '') AND ("handle" <> '')`)
 @Check(`"description" <> ''`)
 export class Product {
@@ -76,7 +76,7 @@ export class Product {
   images!: ProductImage[];
 }
 
-@Entity()
+@Entity("product_image")
 @Check(`"url" <> ''`)
 @Check(`"altText" <> ''`)
 export class ProductImage {
@@ -100,7 +100,7 @@ export class ProductImage {
   product!: Product;
 }
 
-@Entity()
+@Entity("order")
 @Check(`"name" <> ''`)
 @Check(`"email" <> ''`)
 @Check(`"phone" <> ''`)
@@ -141,7 +141,7 @@ export class Order {
   createdAt!: Date;
 }
 
-@Entity()
+@Entity("order_item")
 @Check(`"handle" <> ''`)
 @Check(`"title" <> ''`)
 @Check(`"imageUrl" <> ''`)
@@ -181,7 +181,7 @@ export class OrderItem {
   order!: Order;
 }
 
-@Entity()
+@Entity("user")
 @Check(`"username" <> ''`)
 @Check(`"email" <> ''`)
 @Check(`"password" <> ''`)
@@ -189,7 +189,7 @@ export class User {
   @PrimaryGeneratedColumn()
   id!: number;
 
-  @Column("varchar", { nullable: false })
+  @Column("varchar", { unique: true, nullable: false })
   username!: string;
 
   @Column("varchar", { unique: true, nullable: false })
