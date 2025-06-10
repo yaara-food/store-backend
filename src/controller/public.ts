@@ -124,43 +124,43 @@ export class PublicController {
       await DB.query(`ALTER SEQUENCE "product_id_seq" RESTART WITH 1`);
       await DB.query(`ALTER SEQUENCE "order_id_seq" RESTART WITH 1`);
     };
-    const resetDbStep2Insert = async () => {
-      const { categories, products, orders } = (
-        await import("../../scripts/mock-data.json")
-      ).default;
-
-      const orderRepo = DB.getRepository(Order);
-      const categoryRepo = DB.getRepository(Category);
-
-      const categoryMap = new Map<number, Category & { products: Product[] }>();
-
-      for (const category of categories) {
-        categoryMap.set(category.id, {
-          ...category,
-          products: [],
-        } as unknown as Category);
-      }
-
-      for (const product of products) {
-        const cat = categoryMap.get(product.category_id);
-        if (!cat)
-          throw new HttpError(
-            500,
-            `❌ No matching category_id=${product.category_id} for product ${product.title}`,
-          );
-        cat.products.push({
-          ...product,
-          category: cat,
-        } as unknown as Product);
-      }
-
-      await categoryRepo.save(
-        Array.from(categoryMap.values()) as unknown as Category[],
-      );
-      await orderRepo.save(orders as unknown as Order[]);
-    };
+    // const resetDbStep2Insert = async () => {
+    //   const { categories, products, orders } = (
+    //     await import("../../scripts/mock-data.json")
+    //   ).default;
+    //
+    //   const orderRepo = DB.getRepository(Order);
+    //   const categoryRepo = DB.getRepository(Category);
+    //
+    //   const categoryMap = new Map<number, Category & { products: Product[] }>();
+    //
+    //   for (const category of categories) {
+    //     categoryMap.set(category.id, {
+    //       ...category,
+    //       products: [],
+    //     } as unknown as Category);
+    //   }
+    //
+    //   for (const product of products) {
+    //     const cat = categoryMap.get(product.category_id);
+    //     if (!cat)
+    //       throw new HttpError(
+    //         500,
+    //         `❌ No matching category_id=${product.category_id} for product ${product.title}`,
+    //       );
+    //     cat.products.push({
+    //       ...product,
+    //       category: cat,
+    //     } as unknown as Product);
+    //   }
+    //
+    //   await categoryRepo.save(
+    //     Array.from(categoryMap.values()) as unknown as Category[],
+    //   );
+    //   await orderRepo.save(orders as unknown as Order[]);
+    // };
     await resetDbStep1Delete();
-    await resetDbStep2Insert();
+    // await resetDbStep2Insert();
     return { message: "Reset Mock Data Success" };
   }
 }
