@@ -1,0 +1,1397 @@
+{
+  "products": [
+    {
+      "id": 40,
+      "title": "מלוח",
+      "handle": "מלוח",
+      "category_id": 2,
+      "available": true,
+      "description": "מלוח הוא שיח מדברי המתנשא לגובה של 0.5–2 מטרים, עם עלים אפורים ופריחה ירוקה. הוא עמיד למליחות וליובש, ומתאים לגידול באזורים צחיחים. הצמח משמש למרעה ולשיקום קרקעות.",
+      "price": "35",
+      "updatedAt": "2025-06-25T14:08:16.236Z",
+      "images": [
+        {
+          "id": 107,
+          "url": "https://6nhutrniysn4doai.public.blob.vercel-storage.com/products/%C3%97%C2%9E%C3%97%C2%9C%C3%97%C2%95%C3%97%C2%97.jpg",
+          "altText": "מלוח",
+          "position": 0
+        }
+      ],
+      "category": "שיחים-וצמחי-תועלת",
+      "featuredImage": {
+        "id": 107,
+        "url": "https://6nhutrniysn4doai.public.blob.vercel-storage.com/products/%C3%97%C2%9E%C3%97%C2%9C%C3%97%C2%95%C3%97%C2%97.jpg",
+        "altText": "מלוח",
+        "position": 0
+      }
+    },
+    {
+      "id": 4,
+      "title": "גרניום לימוני",
+      "handle": "גרניום-לימוני",
+      "category_id": 3,
+      "available": true,
+      "description": "גרניום לימוני הוא שיח ירוק־עד המתנשא לגובה של 0.5–1 מטר, עם עלים ריחניים בריח לימון. הוא משמש כצמח נוי ומתאים להכנת תה. בעל תכונות רפואיות רבות.",
+      "price": "20",
+      "updatedAt": "2025-06-25T14:05:12.606Z",
+      "images": [
+        {
+          "id": 106,
+          "url": "https://6nhutrniysn4doai.public.blob.vercel-storage.com/products/%C3%97%C2%92%C3%97%C2%A8%C3%97%C2%A0%C3%97%C2%99%C3%97%C2%95%C3%97%C2%9D%20%C3%97%C2%9C%C3%97%C2%99%C3%97%C2%9E%C3%97%C2%95%C3%97%C2%A0%C3%97%C2%99.jpg",
+          "altText": "גרניום לימוני",
+          "position": 0
+        }
+      ],
+      "category": "צמחי-תבלין",
+      "featuredImage": {
+        "id": 106,
+        "url": "https://6nhutrniysn4doai.public.blob.vercel-storage.com/products/%C3%97%C2%92%C3%97%C2%A8%C3%97%C2%A0%C3%97%C2%99%C3%97%C2%95%C3%97%C2%9D%20%C3%97%C2%9C%C3%97%C2%99%C3%97%C2%9E%C3%97%C2%95%C3%97%C2%A0%C3%97%C2%99.jpg",
+        "altText": "גרניום לימוני",
+        "position": 0
+      }
+    },
+    {
+      "id": 27,
+      "title": "לואיזה",
+      "handle": "לואיזה",
+      "category_id": 3,
+      "available": true,
+      "description": "לואיזה היא שיח ירוק־עד המתנשא לגובה של 1–2 מטרים, עם עלים ירוקים המדיפים ריח לימוני חזק. הצמח משמש ל שתייה כחליטה.",
+      "price": "20",
+      "updatedAt": "2025-06-25T14:04:26.446Z",
+      "images": [
+        {
+          "id": 105,
+          "url": "https://6nhutrniysn4doai.public.blob.vercel-storage.com/products/%C3%97%C2%9C%C3%97%C2%95%C3%97%C2%90%C3%97%C2%99%C3%97%C2%96%C3%97%C2%94.jpg",
+          "altText": "לואיזה",
+          "position": 0
+        }
+      ],
+      "category": "צמחי-תבלין",
+      "featuredImage": {
+        "id": 105,
+        "url": "https://6nhutrniysn4doai.public.blob.vercel-storage.com/products/%C3%97%C2%9C%C3%97%C2%95%C3%97%C2%90%C3%97%C2%99%C3%97%C2%96%C3%97%C2%94.jpg",
+        "altText": "לואיזה",
+        "position": 0
+      }
+    },
+    {
+      "id": 53,
+      "title": "פוטוסים",
+      "handle": "פוטוסים",
+      "category_id": 4,
+      "available": true,
+      "description": "פוטוס הוא צמח בית מטפס או נשפך, הידוע בעמידותו וביכולתו להסתגל למגוון רחב של תנאי תאורה. הוא בעל עלים ירוקים בצורת לב, לעיתים עם כתמים בגווני צהוב או לבן, המוסיפים צבע לכל חלל. הצמח מתאים לגידול בעציצים, סלסלות תלויות או מדפים, ודורש השקיה רק כאשר האדמה מתייבשת. מומלץ להימנע מחשיפה לשמש ישירה חזקה, שעלולה לגרום לצריבת העלים",
+      "price": "30",
+      "updatedAt": "2025-06-25T14:03:16.292Z",
+      "images": [
+        {
+          "id": 104,
+          "url": "https://6nhutrniysn4doai.public.blob.vercel-storage.com/products/%C3%97%C2%A4%C3%97%C2%95%C3%97%C2%98%C3%97%C2%95%C3%97%C2%A1.jpg",
+          "altText": "פוטוסים",
+          "position": 0
+        }
+      ],
+      "category": "צמחי-בית",
+      "featuredImage": {
+        "id": 104,
+        "url": "https://6nhutrniysn4doai.public.blob.vercel-storage.com/products/%C3%97%C2%A4%C3%97%C2%95%C3%97%C2%98%C3%97%C2%95%C3%97%C2%A1.jpg",
+        "altText": "פוטוסים",
+        "position": 0
+      }
+    },
+    {
+      "id": 38,
+      "title": "אוזן פיל",
+      "handle": "אוזן-פיל",
+      "category_id": 4,
+      "available": true,
+      "description": "אוזן פיל, או אלוקסיה, הוא צמח טרופי מרשים בעל עלים גדולים בצורת לב, המזכירים את אוזני הפיל ומכאן שמו. הצמח מגיע במגוון מינים וגדלים, ומתאים לגידול בבית, במרפסת או בגינה מוצלת. מעדיף אור בהיר עקיף, ויש להימנע מחשיפה לשמש ישירה. דורש השקיה מרובה, במיוחד בתקופת הצמיחה, ויש לשמור על לחות גבוהה בסביבתו.",
+      "price": "30",
+      "updatedAt": "2025-06-25T13:58:05.782Z",
+      "images": [
+        {
+          "id": 103,
+          "url": "https://6nhutrniysn4doai.public.blob.vercel-storage.com/products/%C3%97%C2%90%C3%97%C2%95%C3%97%C2%96%C3%97%C2%9F%20%C3%97%C2%A4%C3%97%C2%99%C3%97%C2%9C.jpg",
+          "altText": "אוזן פיל",
+          "position": 0
+        }
+      ],
+      "category": "צמחי-בית",
+      "featuredImage": {
+        "id": 103,
+        "url": "https://6nhutrniysn4doai.public.blob.vercel-storage.com/products/%C3%97%C2%90%C3%97%C2%95%C3%97%C2%96%C3%97%C2%9F%20%C3%97%C2%A4%C3%97%C2%99%C3%97%C2%9C.jpg",
+        "altText": "אוזן פיל",
+        "position": 0
+      }
+    },
+    {
+      "id": 51,
+      "title": "מרווה רגילה",
+      "handle": "מרווה-רגילה",
+      "category_id": 3,
+      "available": true,
+      "description": "מרווה רגילה היא צמח מרפא , רב שנתי . היא משמשת כתבלין ולחליטה. ניחוח נעים (לא לנשים בהריון או מניקות)",
+      "price": "20",
+      "updatedAt": "2025-06-25T13:53:02.727Z",
+      "images": [
+        {
+          "id": 102,
+          "url": "https://6nhutrniysn4doai.public.blob.vercel-storage.com/products/%C3%97%C2%9E%C3%97%C2%A8%C3%97%C2%95%C3%97%C2%95%C3%97%C2%94%20%C3%97%C2%A8%C3%97%C2%92%C3%97%C2%99%C3%97%C2%9C%C3%97%C2%94.jpg",
+          "altText": "מרווה רגילה",
+          "position": 0
+        }
+      ],
+      "category": "צמחי-תבלין",
+      "featuredImage": {
+        "id": 102,
+        "url": "https://6nhutrniysn4doai.public.blob.vercel-storage.com/products/%C3%97%C2%9E%C3%97%C2%A8%C3%97%C2%95%C3%97%C2%95%C3%97%C2%94%20%C3%97%C2%A8%C3%97%C2%92%C3%97%C2%99%C3%97%C2%9C%C3%97%C2%94.jpg",
+        "altText": "מרווה רגילה",
+        "position": 0
+      }
+    },
+    {
+      "id": 21,
+      "title": "מעוג ימי",
+      "handle": "מעוג-ימי",
+      "category_id": 2,
+      "available": true,
+      "description": "מעוג ימי הוא שיח ירוק־עד המתנשא לגובה של 1–1.5 מטרים, עם פריחה ורודה־סגולה מרהיבה באביב ובקיץ. הוא מתאים לגידול בחצי־צל ומוסיף צבעוניות לגינה.",
+      "price": "50",
+      "updatedAt": "2025-06-25T13:52:20.309Z",
+      "images": [
+        {
+          "id": 101,
+          "url": "https://6nhutrniysn4doai.public.blob.vercel-storage.com/products/%C3%97%C2%9E%C3%97%C2%A2%C3%97%C2%95%C3%97%C2%92%20%C3%97%C2%A9%C3%97%C2%99%C3%97%C2%97.jpg",
+          "altText": "מעוג ימי",
+          "position": 0
+        }
+      ],
+      "category": "שיחים-וצמחי-תועלת",
+      "featuredImage": {
+        "id": 101,
+        "url": "https://6nhutrniysn4doai.public.blob.vercel-storage.com/products/%C3%97%C2%9E%C3%97%C2%A2%C3%97%C2%95%C3%97%C2%92%20%C3%97%C2%A9%C3%97%C2%99%C3%97%C2%97.jpg",
+        "altText": "מעוג ימי",
+        "position": 0
+      }
+    },
+    {
+      "id": 49,
+      "title": "עשב לימון",
+      "handle": "עשב-לימון",
+      "category_id": 3,
+      "available": true,
+      "description": "עשב לימון הוא צמח עשבוני רב־שנתי המתנשא לגובה של 1–1.5 מטרים, עם עלים ירוקים צרים המדיפים ריח לימוני חזק. הצמח משמש כתבלין במטבח האסייתי ובעל תכונות רפואיות רבות. הוא עמיד ומתאים לגידול בגינות ובאזורים חמים.",
+      "price": "20",
+      "updatedAt": "2025-06-23T07:54:32.930Z",
+      "images": [
+        {
+          "id": 100,
+          "url": "https://6nhutrniysn4doai.public.blob.vercel-storage.com/products/%C3%97%C2%A2%C3%97%C2%A9%C3%97%C2%91%20%C3%97%C2%9C%C3%97%C2%99%C3%97%C2%9E%C3%97%C2%95%C3%97%C2%9F.jpg",
+          "altText": "עשב לימון",
+          "position": 0
+        }
+      ],
+      "category": "צמחי-תבלין",
+      "featuredImage": {
+        "id": 100,
+        "url": "https://6nhutrniysn4doai.public.blob.vercel-storage.com/products/%C3%97%C2%A2%C3%97%C2%A9%C3%97%C2%91%20%C3%97%C2%9C%C3%97%C2%99%C3%97%C2%9E%C3%97%C2%95%C3%97%C2%9F.jpg",
+        "altText": "עשב לימון",
+        "position": 0
+      }
+    },
+    {
+      "id": 24,
+      "title": "לוונדר משונן",
+      "handle": "לוונדר-משונן",
+      "category_id": 3,
+      "available": true,
+      "description": "לוונדר משונן הוא שיח ירוק־עד המתנשא לגובה של 60–80 ס”מ, עם עלים ירוקים משוננים ופריחה סגולה מרהיבה לאורך רוב השנה. הצמח מדיף ריח נעים, ידוע כמרחיק יתושים.",
+      "price": "20",
+      "updatedAt": "2025-06-22T14:57:35.975Z",
+      "images": [
+        {
+          "id": 99,
+          "url": "https://6nhutrniysn4doai.public.blob.vercel-storage.com/products/%C3%97%C2%9C%C3%97%C2%95%C3%97%C2%95%C3%97%C2%A0%C3%97%C2%93%C3%97%C2%A8%20%C3%97%C2%9E%C3%97%C2%A9%C3%97%C2%95%C3%97%C2%A0%C3%97%C2%9F.jpg",
+          "altText": "לוונדר משונן",
+          "position": 0
+        }
+      ],
+      "category": "צמחי-תבלין",
+      "featuredImage": {
+        "id": 99,
+        "url": "https://6nhutrniysn4doai.public.blob.vercel-storage.com/products/%C3%97%C2%9C%C3%97%C2%95%C3%97%C2%95%C3%97%C2%A0%C3%97%C2%93%C3%97%C2%A8%20%C3%97%C2%9E%C3%97%C2%A9%C3%97%C2%95%C3%97%C2%A0%C3%97%C2%9F.jpg",
+        "altText": "לוונדר משונן",
+        "position": 0
+      }
+    },
+    {
+      "id": 17,
+      "title": "עלה דפנה גדול",
+      "handle": "עלה-דפנה-גדול",
+      "category_id": 2,
+      "available": true,
+      "description": "עלה דפנה גדול הוא עץ ירוק־עד המתנשא לגובה של 5–10 מטרים, עם עלים ירוקים וריחניים המשמשים כתבלין. העץ משמש כצמח נוי בגינות, גדר חיה או כעץ תבלין. הוא עמיד ומתאים לגידול בגינות ובאזורים חמים. עלה דפנה קטן (Laurus nobilis) עלה דפנה קטן הוא שיח ירוק־עד ממשפחת העריים, המתנשא לגובה של 1–3 מטרים. עליו הריחניים משמשים כתבלין במטבח ומכילים שמנים אתריים בעלי תכונות רפואיות. הצמח עמיד ומתאים לגידול בגינות ובאזורים חמים.",
+      "price": "100",
+      "updatedAt": "2025-06-22T14:55:42.873Z",
+      "images": [
+        {
+          "id": 98,
+          "url": "https://6nhutrniysn4doai.public.blob.vercel-storage.com/products/%C3%97%C2%A2%C3%97%C2%A8%20%C3%97%C2%90%C3%97%C2%A6%C3%97%C2%99%C3%97%C2%9C.jpg",
+          "altText": "עלה דפנה גדול",
+          "position": 0
+        }
+      ],
+      "category": "שיחים-וצמחי-תועלת",
+      "featuredImage": {
+        "id": 98,
+        "url": "https://6nhutrniysn4doai.public.blob.vercel-storage.com/products/%C3%97%C2%A2%C3%97%C2%A8%20%C3%97%C2%90%C3%97%C2%A6%C3%97%C2%99%C3%97%C2%9C.jpg",
+        "altText": "עלה דפנה גדול",
+        "position": 0
+      }
+    },
+    {
+      "id": 3,
+      "title": "לוונדר אפור",
+      "handle": "לוונדר-אפור",
+      "category_id": 3,
+      "available": true,
+      "description": "לוונדר אפור הוא שיח ירוק־עד המתנשא לגובה של 60–80 ס”מ, עם עלים אפורים־כסופים ופריחה סגולה מרהיבה לאורך רוב השנה. הצמח מדיף ריח נעים. בעל שימושים רבים בתעשיית הרוקחות והקוסמטיקה.",
+      "price": "20",
+      "updatedAt": "2025-06-22T14:52:03.461Z",
+      "images": [
+        {
+          "id": 97,
+          "url": "https://6nhutrniysn4doai.public.blob.vercel-storage.com/products/%C3%97%C2%9C%C3%97%C2%91%C3%97%C2%A0%C3%97%C2%93%C3%97%C2%A8%20%C3%97%C2%90%C3%97%C2%A4%C3%97%C2%95%C3%97%C2%A8.jpg",
+          "altText": "לוונדר אפור",
+          "position": 0
+        }
+      ],
+      "category": "צמחי-תבלין",
+      "featuredImage": {
+        "id": 97,
+        "url": "https://6nhutrniysn4doai.public.blob.vercel-storage.com/products/%C3%97%C2%9C%C3%97%C2%91%C3%97%C2%A0%C3%97%C2%93%C3%97%C2%A8%20%C3%97%C2%90%C3%97%C2%A4%C3%97%C2%95%C3%97%C2%A8.jpg",
+        "altText": "לוונדר אפור",
+        "position": 0
+      }
+    },
+    {
+      "id": 42,
+      "title": "סנסיוורות גבוהות",
+      "handle": "סנסיוורות-גבוהות",
+      "category_id": 4,
+      "available": true,
+      "description": "סנסיוורה גבוהה, היא צמח בית עמיד במיוחד, המתנשא לגובה של עד 1.5 מטרים. היא בעלת עלים ארוכים, בשרניים ומפוספסים בגווני ירוק וצהוב, הגדלים בצורה זקופה. הצמח מטהר את האוויר ומסתגל למגוון רחב של תנאי תאורה, מה שהופך אותו לאידיאלי למתחילים או לאנשים עסוקים. דורש השקיה מועטה ומתאים לגידול בבית ובמשרד",
+      "price": "70",
+      "updatedAt": "2025-06-19T12:54:02.438Z",
+      "images": [
+        {
+          "id": 94,
+          "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+          "altText": "סנסיוורות גבוהות",
+          "position": 0
+        }
+      ],
+      "category": "צמחי-בית",
+      "featuredImage": {
+        "id": 94,
+        "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+        "altText": "סנסיוורות גבוהות",
+        "position": 0
+      }
+    },
+    {
+      "id": 18,
+      "title": "סנגוניום",
+      "handle": "סנגוניום",
+      "category_id": 4,
+      "available": true,
+      "description": "סינגוניום, הוא צמח נוי פופולרי עם עלים בצורת לב בגווני ירוק ולעיתים ורוד או לבן. הוא צמח מטפס או נשפך, המתאים לגידול בעציצים, בגינות ועוד.",
+      "price": "30",
+      "updatedAt": "2025-06-19T12:53:16.552Z",
+      "images": [
+        {
+          "id": 93,
+          "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+          "altText": "סנגוניום",
+          "position": 0
+        }
+      ],
+      "category": "צמחי-בית",
+      "featuredImage": {
+        "id": 93,
+        "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+        "altText": "סנגוניום",
+        "position": 0
+      }
+    },
+    {
+      "id": 13,
+      "title": "סמבוק",
+      "handle": "סמבוק",
+      "category_id": 2,
+      "available": true,
+      "description": "סמבוק שחור הוא שיח או עץ קטן המתנשא לגובה של 3–6 מטרים, עם פריחה לבנה באביב ופירות סגולים־שחורים בקיץ. הפירות משמשים להכנת סירופים, ריבות ויין, ומוכרים בזכות תכונותיהם הבריאותיות. יש לשים לב: העלים רעילים.",
+      "price": "35",
+      "updatedAt": "2025-06-19T12:51:40.574Z",
+      "images": [
+        {
+          "id": 92,
+          "url": "https://6nhutrniysn4doai.public.blob.vercel-storage.com/products/%C3%97%C2%A1%C3%97%C2%9E%C3%97%C2%91%C3%97%C2%95%C3%97%C2%A7.jpg",
+          "altText": "סמבוק",
+          "position": 0
+        }
+      ],
+      "category": "שיחים-וצמחי-תועלת",
+      "featuredImage": {
+        "id": 92,
+        "url": "https://6nhutrniysn4doai.public.blob.vercel-storage.com/products/%C3%97%C2%A1%C3%97%C2%9E%C3%97%C2%91%C3%97%C2%95%C3%97%C2%A7.jpg",
+        "altText": "סמבוק",
+        "position": 0
+      }
+    },
+    {
+      "id": 6,
+      "title": "נענע",
+      "handle": "נענע",
+      "category_id": 3,
+      "available": true,
+      "description": "נענע היא צמח רב שנתי, . משמשת כתבלין במטבח ובעלת תכונות רפואיות רבות. מתאים לחליטה בתה.",
+      "price": "20",
+      "updatedAt": "2025-06-19T12:49:32.572Z",
+      "images": [
+        {
+          "id": 91,
+          "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+          "altText": "נענע",
+          "position": 0
+        }
+      ],
+      "category": "צמחי-תבלין",
+      "featuredImage": {
+        "id": 91,
+        "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+        "altText": "נענע",
+        "position": 0
+      }
+    },
+    {
+      "id": 20,
+      "title": "מרוות ירושלים",
+      "handle": "מרוות-ירושלים",
+      "category_id": 5,
+      "available": true,
+      "description": "מרוות ירושלים, בעלת שושנת עלים גדולים ושעירים, ובאביב מופיעים פרחים ארגמניים מרהיבים המסודרים על עמוד תפרחת גבוה. הצמח מושך דבורים ומאביקים אחרים, העלים מתאימים לבישול.",
+      "price": "15",
+      "updatedAt": "2025-06-19T12:48:21.210Z",
+      "images": [
+        {
+          "id": 90,
+          "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+          "altText": "מרוות ירושלים",
+          "position": 0
+        }
+      ],
+      "category": "זרעים",
+      "featuredImage": {
+        "id": 90,
+        "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+        "altText": "מרוות ירושלים",
+        "position": 0
+      }
+    },
+    {
+      "id": 5,
+      "title": "מרווה ריחנית",
+      "handle": "מרווה-ריחנית",
+      "category_id": 3,
+      "available": true,
+      "description": "מרווה ריחנית היא שיח ירוק עד בעל עלים משולשים ומקומטים המפיצים ריח נעים שנשאר לאורך זמן. מתאים לגינות",
+      "price": "20",
+      "updatedAt": "2025-06-19T12:47:17.090Z",
+      "images": [
+        {
+          "id": 89,
+          "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+          "altText": "מרווה ריחנית",
+          "position": 0
+        }
+      ],
+      "category": "צמחי-תבלין",
+      "featuredImage": {
+        "id": 89,
+        "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+        "altText": "מרווה ריחנית",
+        "position": 0
+      }
+    },
+    {
+      "id": 34,
+      "title": "מרווה אפריקאית",
+      "handle": "מרווה-אפריקאית",
+      "category_id": 2,
+      "available": true,
+      "description": "מרווה אפריקאית היא שיח ירוק־עד המתנשא לגובה של עד 2 מטרים, עם פריחה צהובה־כתומה באביב ובקיץ. הצמח מושך מאביקים ומשמש כצמח נוי בגינות.",
+      "price": "40",
+      "updatedAt": "2025-06-19T12:44:15.703Z",
+      "images": [
+        {
+          "id": 87,
+          "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+          "altText": "מרווה אפריקאית",
+          "position": 0
+        }
+      ],
+      "category": "שיחים-וצמחי-תועלת",
+      "featuredImage": {
+        "id": 87,
+        "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+        "altText": "מרווה אפריקאית",
+        "position": 0
+      }
+    },
+    {
+      "id": 10,
+      "title": "מליסה",
+      "handle": "מליסה",
+      "category_id": 3,
+      "available": true,
+      "description": "מליסה היא צמח מרפא . היא משמשת כתבלין ולחליטות לשתייה. עם ניחוח לימוני נעים",
+      "price": "20",
+      "updatedAt": "2025-06-19T12:42:54.919Z",
+      "images": [
+        {
+          "id": 84,
+          "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+          "altText": "מליסה",
+          "position": 0
+        }
+      ],
+      "category": "צמחי-תבלין",
+      "featuredImage": {
+        "id": 84,
+        "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+        "altText": "מליסה",
+        "position": 0
+      }
+    },
+    {
+      "id": 41,
+      "title": "מכנף",
+      "handle": "מכנף",
+      "category_id": 1,
+      "available": true,
+      "description": "מכנף נאה הוא עץ נשיר המתנשא לגובה רב, עם נוף רחב ופריחה צהובה מרהיבה באביב. העץ משמש כעץ נוי בגינות פרטיות וציבוריות, ומתאים ליצירת צל.",
+      "price": "50",
+      "updatedAt": "2025-06-19T12:40:02.390Z",
+      "images": [
+        {
+          "id": 82,
+          "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+          "altText": "מכנף",
+          "position": 0
+        }
+      ],
+      "category": "עצים",
+      "featuredImage": {
+        "id": 82,
+        "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+        "altText": "מכנף",
+        "position": 0
+      }
+    },
+    {
+      "id": 44,
+      "title": "מורן החורש",
+      "handle": "מורן-החורש",
+      "category_id": 2,
+      "available": true,
+      "description": "מורן החורש הוא שיח ירוק־עד המתנשא לגובה של 2–5 מטרים, עם פריחה לבנה באביב. הוא משמש כצמח נוי בגינות ומושך מאביקים רבים. הצמח עמיד ומתאים לגידול בגינות .",
+      "price": "40",
+      "updatedAt": "2025-06-19T12:39:15.494Z",
+      "images": [
+        {
+          "id": 81,
+          "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+          "altText": "מורן החורש",
+          "position": 0
+        }
+      ],
+      "category": "שיחים-וצמחי-תועלת",
+      "featuredImage": {
+        "id": 81,
+        "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+        "altText": "מורן החורש",
+        "position": 0
+      }
+    },
+    {
+      "id": 50,
+      "title": "מורינגה",
+      "handle": "מורינגה",
+      "category_id": 1,
+      "available": true,
+      "description": "מורינגה, המכונה “עץ הפלא”, הוא עץ טרופי הגדל במהירות ומסתגל לתנאי יובש. כל חלקיו—עלים, תרמילים, פרחים ושורשים—אכילים ובעלי ערך תזונתי גבוה. הוא משמש ברפואה העממית ומוכר בזכות תכולת הוויטמינים, המינרלים והנוגדי החמצון שבו.",
+      "price": "40",
+      "updatedAt": "2025-06-19T12:38:47.829Z",
+      "images": [
+        {
+          "id": 80,
+          "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+          "altText": "מורינגה",
+          "position": 0
+        }
+      ],
+      "category": "עצים",
+      "featuredImage": {
+        "id": 80,
+        "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+        "altText": "מורינגה",
+        "position": 0
+      }
+    },
+    {
+      "id": 47,
+      "title": "לוונדר מנוצה",
+      "handle": "לוונדר-מנוצה",
+      "category_id": 3,
+      "available": true,
+      "description": "לוונדר מנוצה הוא שיח ירוק־עד המתנשא לגובה של 60–80 ס”מ, עם עלים מנוצים ופריחה סגולה מרהיבה לאורך רוב השנה. הצמח מדיף ריח נעים , ידוע כמרחיק יתושים.",
+      "price": "20",
+      "updatedAt": "2025-06-19T12:37:43.659Z",
+      "images": [
+        {
+          "id": 78,
+          "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+          "altText": "לוונדר מנוצה",
+          "position": 0
+        }
+      ],
+      "category": "צמחי-תבלין",
+      "featuredImage": {
+        "id": 78,
+        "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+        "altText": "לוונדר מנוצה",
+        "position": 0
+      }
+    },
+    {
+      "id": 28,
+      "title": "כובע הנזיר",
+      "handle": "כובע-הנזיר",
+      "category_id": 5,
+      "available": true,
+      "description": "כובע הנזיר הוא צמח חד־שנתי מטפס או משתרע, בעל עלים עגולים ופרחים מרהיבים בגווני כתום, אדום וצהוב. הוא פורח מהחורף ועד האביב, ומושך פרפרים ודבורים לגינה. העלים והפרחים אכילים, בעלי טעם חרפרף, ומתאימים לסלטים ולתוספות קולינריות.",
+      "price": "15",
+      "updatedAt": "2025-06-19T12:32:30.661Z",
+      "images": [
+        {
+          "id": 75,
+          "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+          "altText": "כובע הנזיר",
+          "position": 0
+        }
+      ],
+      "category": "זרעים",
+      "featuredImage": {
+        "id": 75,
+        "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+        "altText": "כובע הנזיר",
+        "position": 0
+      }
+    },
+    {
+      "id": 25,
+      "title": "טגטס לימוני",
+      "handle": "טגטס-לימוני",
+      "category_id": 3,
+      "available": true,
+      "description": "טגטס לימוני הוא שיח ירוק־עד המתנשא לגובה של 1–2 מטרים, עם עלים ירוקים המדיפים ריח לימוני חזק ופריחה צהובה מרהיבה. הצמח משמש כצמח נוי ומתאים גם לחליטה לתה.",
+      "price": "20",
+      "updatedAt": "2025-06-19T12:31:42.716Z",
+      "images": [
+        {
+          "id": 74,
+          "url": "https://6nhutrniysn4doai.public.blob.vercel-storage.com/products/1000063816.jpg",
+          "altText": "טגטס לימוני",
+          "position": 0
+        }
+      ],
+      "category": "צמחי-תבלין",
+      "featuredImage": {
+        "id": 74,
+        "url": "https://6nhutrniysn4doai.public.blob.vercel-storage.com/products/1000063816.jpg",
+        "altText": "טגטס לימוני",
+        "position": 0
+      }
+    },
+    {
+      "id": 39,
+      "title": "תות צבארי-אדום גודל בינוני, מתוק",
+      "handle": "תות-צבארי-אדום-גודל-בינוני,-מתוק",
+      "category_id": 1,
+      "available": true,
+      "description": "תות צבארי אדום, מתנשא לגובה של 2–3 מטרים, עם פירות אדומים בגודל בינוני. הפירות מתוקים ועסיסיים. הצמח עמיד לתנאים שונים ומתאים לגידול במגוון אזורים.",
+      "price": "70",
+      "updatedAt": "2025-06-19T12:29:44.975Z",
+      "images": [
+        {
+          "id": 72,
+          "url": "https://6nhutrniysn4doai.public.blob.vercel-storage.com/products/%C3%97%C2%A2%C3%97%C2%A5%20%C3%97%C2%AA%C3%97%C2%95%C3%97%C2%AA.jpg",
+          "altText": "תות צבארי-אדום גודל בינוני, מתוק",
+          "position": 0
+        },
+        {
+          "id": 73,
+          "url": "https://6nhutrniysn4doai.public.blob.vercel-storage.com/products/%C3%97%C2%A4%C3%97%C2%A8%C3%97%C2%99%20%C3%97%C2%94%C3%97%C2%A6%C3%97%C2%91%C3%97%C2%90%C3%97%C2%A8%C3%97%C2%99.jpg",
+          "altText": "https://6nhutrniysn4doai.public.blob.vercel-storage.com/products/%C3%97%C2%A4%C3%97%C2%A8%C3%97%C2%99%20%C3%97%C2%94%C3%97%C2%A6%C3%97%C2%91%C3%97%C2%90%C3%97%C2%A8%C3%97%C2%99.jpg",
+          "position": 1
+        }
+      ],
+      "category": "עצים",
+      "featuredImage": {
+        "id": 72,
+        "url": "https://6nhutrniysn4doai.public.blob.vercel-storage.com/products/%C3%97%C2%A2%C3%97%C2%A5%20%C3%97%C2%AA%C3%97%C2%95%C3%97%C2%AA.jpg",
+        "altText": "תות צבארי-אדום גודל בינוני, מתוק",
+        "position": 0
+      }
+    },
+    {
+      "id": 31,
+      "title": "חוטמית זיפנית",
+      "handle": "חוטמית-זיפנית",
+      "category_id": 5,
+      "available": true,
+      "description": "חוטמית זיפנית היא צמח נוי, המתנשא לגובה של 2–3 מטרים. היא פורחת באביב בפרחים גדולים ומרשימים בשלל צבעים.",
+      "price": "15",
+      "updatedAt": "2025-06-19T12:28:11.713Z",
+      "images": [
+        {
+          "id": 71,
+          "url": "https://6nhutrniysn4doai.public.blob.vercel-storage.com/products/%C3%97%C2%97%C3%97%C2%95%C3%97%C2%98%C3%97%C2%9E%C3%97%C2%99%C3%97%C2%AA%20%C3%97%C2%96%C3%97%C2%99%C3%97%C2%A4%C3%97%C2%A0%C3%97%C2%99%C3%97%C2%AA.jpg",
+          "altText": "חוטמית זיפנית",
+          "position": 0
+        }
+      ],
+      "category": "זרעים",
+      "featuredImage": {
+        "id": 71,
+        "url": "https://6nhutrniysn4doai.public.blob.vercel-storage.com/products/%C3%97%C2%97%C3%97%C2%95%C3%97%C2%98%C3%97%C2%9E%C3%97%C2%99%C3%97%C2%AA%20%C3%97%C2%96%C3%97%C2%99%C3%97%C2%A4%C3%97%C2%A0%C3%97%C2%99%C3%97%C2%AA.jpg",
+        "altText": "חוטמית זיפנית",
+        "position": 0
+      }
+    },
+    {
+      "id": 7,
+      "title": "גויאבה תותית",
+      "handle": "גויאבה-תותית",
+      "category_id": 1,
+      "available": true,
+      "description": "גויאבה תותית, עץ קטן, המתנשא לגובה של 2–6 מטרים. פירותיו הקטנים, אדומים או צהובים, מתאימים לאכילה,  ריבות ומיצים.",
+      "price": "50",
+      "updatedAt": "2025-06-19T12:23:12.093Z",
+      "images": [
+        {
+          "id": 68,
+          "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+          "altText": "גויאבה תותית",
+          "position": 0
+        }
+      ],
+      "category": "עצים",
+      "featuredImage": {
+        "id": 68,
+        "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+        "altText": "גויאבה תותית",
+        "position": 0
+      }
+    },
+    {
+      "id": 37,
+      "title": "בן עוזרר",
+      "handle": "בן-עוזרר",
+      "category_id": 2,
+      "available": true,
+      "description": "בן עוזרר, הוא שיח ירוק־עד המתנשא לגובה של 1–2 מטרים, עם פריחה ורודה או לבנה באביב. הוא משמש כצמח נוי בגינות, גדר חיה או כצמח כיסוי. הצמח עמיד",
+      "price": "50",
+      "updatedAt": "2025-06-19T12:20:02.440Z",
+      "images": [
+        {
+          "id": 67,
+          "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+          "altText": "בן עוזרר",
+          "position": 0
+        }
+      ],
+      "category": "שיחים-וצמחי-תועלת",
+      "featuredImage": {
+        "id": 67,
+        "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+        "altText": "בן עוזרר",
+        "position": 0
+      }
+    },
+    {
+      "id": 46,
+      "title": "אפונת יונה",
+      "handle": "אפונת-יונה",
+      "category_id": 2,
+      "available": true,
+      "description": "אפונת יונה היא שיח רב־שנתי ממשפחת הקטניות, המתנשא לגובה של 2–3 מטרים. היא פורחת בפרחים צבעוניים ובעלת אפונים אכילים, מה שהופך אותה לצמח מאכל ולשיפור הקרקע. הצמח עמיד ומתאים לגידול בגינות",
+      "price": "50",
+      "updatedAt": "2025-06-19T12:17:26.043Z",
+      "images": [
+        {
+          "id": 66,
+          "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+          "altText": "אפונת יונה",
+          "position": 0
+        }
+      ],
+      "category": "שיחים-וצמחי-תועלת",
+      "featuredImage": {
+        "id": 66,
+        "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+        "altText": "אפונת יונה",
+        "position": 0
+      }
+    },
+    {
+      "id": 35,
+      "title": "אפונה ריחנית",
+      "handle": "אפונה-ריחנית",
+      "category_id": 2,
+      "available": true,
+      "description": "אפונה ריחנית היא צמח מטפס חד־שנתי, המתנשא לגובה של 1–2 מטרים. היא פורחת באביב בפרחים ריחניים בצבעים שונים ומושכת מאביקים רבים. הצמח עמיד ומתאים לגידול בגינות ובאדניות.",
+      "price": "15",
+      "updatedAt": "2025-06-19T12:14:29.488Z",
+      "images": [
+        {
+          "id": 65,
+          "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+          "altText": "אפונה ריחנית",
+          "position": 0
+        }
+      ],
+      "category": "שיחים-וצמחי-תועלת",
+      "featuredImage": {
+        "id": 65,
+        "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+        "altText": "אפונה ריחנית",
+        "position": 0
+      }
+    },
+    {
+      "id": 52,
+      "title": "אחירותם",
+      "handle": "אחירותם",
+      "category_id": 2,
+      "available": true,
+      "description": "אחירותם החורש הוא שיח מסועף, המתנשא לגובה של 1–4 מטרים. הוא פורח באביב בפרחים צהובים מרהיבים ומושך מאביקים רבים. הצמח עמיד ומתאים לגידול בגינות ובאזורים חמים",
+      "price": "80",
+      "updatedAt": "2025-06-19T12:12:48.533Z",
+      "images": [
+        {
+          "id": 64,
+          "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+          "altText": "אחירותם",
+          "position": 0
+        }
+      ],
+      "category": "שיחים-וצמחי-תועלת",
+      "featuredImage": {
+        "id": 64,
+        "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+        "altText": "אחירותם",
+        "position": 0
+      }
+    },
+    {
+      "id": 1,
+      "title": "שעועית הגלידה",
+      "handle": "שעועית-הגלידה",
+      "category_id": 1,
+      "available": true,
+      "description": "עץ טרופי מרשים המתנשא לגובה של 10–15 מטרים, בעל נוף רחב ופריחה לבנה. פירותיו הם תרמילים ארוכים המכילים ציפה לבנה ומתוקה בטעם המזכיר גלידת וניל, ומכאן שמו. העץ משמש כעץ צל ומושך מאביקים, ומתאים לגידול באזורים חמים.",
+      "price": "100",
+      "updatedAt": "2025-06-17T14:25:45.579Z",
+      "images": [
+        {
+          "id": 58,
+          "url": "https://6nhutrniysn4doai.public.blob.vercel-storage.com/products/%C3%97%C2%A9%C3%97%C2%A2%C3%97%C2%95%C3%97%C2%A2%C3%97%C2%99%C3%97%C2%AA%20%C3%97%C2%94%C3%97%C2%92%C3%97%C2%9C%C3%97%C2%99%C3%97%C2%93%C3%97%C2%94.jpg",
+          "altText": "שעועית הגלידה",
+          "position": 0
+        }
+      ],
+      "category": "עצים",
+      "featuredImage": {
+        "id": 58,
+        "url": "https://6nhutrniysn4doai.public.blob.vercel-storage.com/products/%C3%97%C2%A9%C3%97%C2%A2%C3%97%C2%95%C3%97%C2%A2%C3%97%C2%99%C3%97%C2%AA%20%C3%97%C2%94%C3%97%C2%92%C3%97%C2%9C%C3%97%C2%99%C3%97%C2%93%C3%97%C2%94.jpg",
+        "altText": "שעועית הגלידה",
+        "position": 0
+      }
+    },
+    {
+      "id": 26,
+      "title": "אוזן ארי אפריקאי",
+      "handle": "אוזן-ארי-אפריקאי",
+      "category_id": 2,
+      "available": true,
+      "description": "אוזן ארי אפריקאי הוא שיח ירוק־עד המתנשא לגובה של 1–2 מטרים, עם פריחה כתומה מרהיבה באביב ובקיץ. הצמח מושך מאביקים ומשמש כצמח נוי בגינות. הוא עמיד ומתאים לגידול בגינות ובאזורים חמים.",
+      "price": "40",
+      "updatedAt": "2025-06-17T06:09:48.260Z",
+      "images": [
+        {
+          "id": 55,
+          "url": "https://6nhutrniysn4doai.public.blob.vercel-storage.com/products/%C3%97%C2%90%C3%97%C2%95%C3%97%C2%96%C3%97%C2%9F%20%C3%97%C2%90%C3%97%C2%A8%C3%97%C2%99.jpg",
+          "altText": "אוזן ארי אפריקאי",
+          "position": 0
+        }
+      ],
+      "category": "שיחים-וצמחי-תועלת",
+      "featuredImage": {
+        "id": 55,
+        "url": "https://6nhutrniysn4doai.public.blob.vercel-storage.com/products/%C3%97%C2%90%C3%97%C2%95%C3%97%C2%96%C3%97%C2%9F%20%C3%97%C2%90%C3%97%C2%A8%C3%97%C2%99.jpg",
+        "altText": "אוזן ארי אפריקאי",
+        "position": 0
+      }
+    },
+    {
+      "id": 48,
+      "title": "צחנן מבאיש",
+      "handle": "צחנן-מבאיש",
+      "category_id": 2,
+      "available": true,
+      "description": "צחנן מבאיש הוא שיח נשיר קיץ ממשפחת הקטניות, המתנשא לגובה של 1–3 מטרים. הוא פורח בחורף בפרחים צהובים־ירקרקים, אך כל חלקיו, פרט לפרי, מדיפים ריח בלתי נעים. הצמח עמיד ומתאים לגידול בגינות ובאזורים חמים.",
+      "price": "50",
+      "updatedAt": "2025-05-17T09:28:04.999Z",
+      "images": [
+        {
+          "id": 48,
+          "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+          "altText": "צחנן מבאיש",
+          "position": 0
+        }
+      ],
+      "category": "שיחים-וצמחי-תועלת",
+      "featuredImage": {
+        "id": 48,
+        "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+        "altText": "צחנן מבאיש",
+        "position": 0
+      }
+    },
+    {
+      "id": 45,
+      "title": "אספסת השיח",
+      "handle": "אספסת-השיח",
+      "category_id": 2,
+      "available": true,
+      "description": "אספסת השיח היא שיח ירוק־עד ממשפחת הקטניות, המתנשא לגובה של 1–2 מטרים. היא פורחת באביב בפרחים צהובים ומעשירה את הקרקע בחנקן, מה שהופך אותה לצמח כיסוי מצוין. הצמח עמיד ומתאים לגידול בגינות ובאזורים חמים.",
+      "price": "50",
+      "updatedAt": "2025-05-17T09:28:02.962Z",
+      "images": [
+        {
+          "id": 45,
+          "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+          "altText": "אספסת השיח",
+          "position": 0
+        }
+      ],
+      "category": "שיחים-וצמחי-תועלת",
+      "featuredImage": {
+        "id": 45,
+        "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+        "altText": "אספסת השיח",
+        "position": 0
+      }
+    },
+    {
+      "id": 43,
+      "title": "תות לבן ארוך",
+      "handle": "תות-לבן-ארוך",
+      "category_id": 1,
+      "available": true,
+      "description": "תות לבן ארוך הוא עץ נשיר המתנשא לגובה של 5–10 מטרים, עם פירות לבנים ארוכים ומתוקים. הפירות מבשילים באביב ומתאימים לאכילה טרייה ולשימורים. העץ עמיד ומתאים לגידול בגינות ובאזורים חמים.",
+      "price": "70",
+      "updatedAt": "2025-05-17T09:28:01.657Z",
+      "images": [
+        {
+          "id": 43,
+          "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+          "altText": "תות לבן ארוך",
+          "position": 0
+        }
+      ],
+      "category": "עצים",
+      "featuredImage": {
+        "id": 43,
+        "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+        "altText": "תות לבן ארוך",
+        "position": 0
+      }
+    },
+    {
+      "id": 36,
+      "title": "קומפרי",
+      "handle": "קומפרי",
+      "category_id": 2,
+      "available": true,
+      "description": "קומפרי הוא צמח עשבוני רב־שנתי עם עלים ירוקים ופרחים סגולים או ורודים. הוא משמש ברפואה העממית לטיפול בפצעים ובכאבים, ומוכר בזכות תכונותיו המרפאות. הצמח עמיד ומתאים לגידול בגינות ובאזורים חמים.",
+      "price": "35",
+      "updatedAt": "2025-05-17T09:27:56.453Z",
+      "images": [
+        {
+          "id": 36,
+          "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+          "altText": "קומפרי",
+          "position": 0
+        }
+      ],
+      "category": "שיחים-וצמחי-תועלת",
+      "featuredImage": {
+        "id": 36,
+        "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+        "altText": "קומפרי",
+        "position": 0
+      }
+    },
+    {
+      "id": 33,
+      "title": "רימון מליסי",
+      "handle": "רימון-מליסי",
+      "category_id": 1,
+      "available": true,
+      "description": "רימון מליסי הוא זן ייחודי המתאפיין בקליפה בהירה ובגרעינים רכים במיוחד. טעמו מתוק מאוד, כמעט ללא חמיצות, מה שהופך אותו למועדף לאכילה טרייה. העץ נשיר ומתאים לגידול בגינות פרטיות ובאזורים חמים.",
+      "price": "70",
+      "updatedAt": "2025-05-17T09:27:53.591Z",
+      "images": [
+        {
+          "id": 33,
+          "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+          "altText": "רימון מליסי",
+          "position": 0
+        }
+      ],
+      "category": "עצים",
+      "featuredImage": {
+        "id": 33,
+        "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+        "altText": "רימון מליסי",
+        "position": 0
+      }
+    },
+    {
+      "id": 32,
+      "title": "תות לבן קצר",
+      "handle": "תות-לבן-קצר",
+      "category_id": 1,
+      "available": true,
+      "description": "תות לבן קצר הוא עץ נשיר המתנשא לגובה של 5–10 מטרים, עם פירות לבנים קצרים ומתוקים. הפירות מבשילים באביב ומתאימים לאכילה טרייה ולשימורים. העץ עמיד ומתאים לגידול בגינות ובאזורים חמים.",
+      "price": "70",
+      "updatedAt": "2025-05-17T09:27:52.812Z",
+      "images": [
+        {
+          "id": 32,
+          "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+          "altText": "תות לבן קצר",
+          "position": 0
+        }
+      ],
+      "category": "עצים",
+      "featuredImage": {
+        "id": 32,
+        "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+        "altText": "תות לבן קצר",
+        "position": 0
+      }
+    },
+    {
+      "id": 30,
+      "title": "תאנה",
+      "handle": "תאנה",
+      "category_id": 1,
+      "available": true,
+      "description": "תאנה היא עץ נשיר המתנשא לגובה של 3–10 מטרים, עם עלים גדולים ומפורצים. פירותיה המתוקים והעסיסיים נחשבים לאחד משבעת המינים בהם השתבחה ארץ ישראל. העץ עמיד ומתאים לגידול בגינות ובאזורים חמים.",
+      "price": "80",
+      "updatedAt": "2025-05-17T09:27:51.321Z",
+      "images": [
+        {
+          "id": 30,
+          "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+          "altText": "תאנה",
+          "position": 0
+        }
+      ],
+      "category": "עצים",
+      "featuredImage": {
+        "id": 30,
+        "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+        "altText": "תאנה",
+        "position": 0
+      }
+    },
+    {
+      "id": 29,
+      "title": "רימון עכו",
+      "handle": "רימון-עכו",
+      "category_id": 1,
+      "available": true,
+      "description": "זן רימון מקומי המתנשא לגובה של 3–4 מטרים, עם פריחה אדומה באביב. פירותיו גדולים, מתוקים ועסיסיים, עם קליפה אדומה וגרגרים אדומים. העץ עמיד ומתאים לגידול בגינות ובאזורים חמים.",
+      "price": "70",
+      "updatedAt": "2025-05-17T09:27:50.564Z",
+      "images": [
+        {
+          "id": 29,
+          "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+          "altText": "רימון עכו",
+          "position": 0
+        }
+      ],
+      "category": "עצים",
+      "featuredImage": {
+        "id": 29,
+        "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+        "altText": "רימון עכו",
+        "position": 0
+      }
+    },
+    {
+      "id": 23,
+      "title": "תות אופיר",
+      "handle": "תות-אופיר",
+      "category_id": 1,
+      "available": true,
+      "description": "תות אופיר הוא זן מקומי המתאפיין בפירות אדומים-כהים ומתוקים במיוחד. העץ נשיר ומתאים לגידול בגינות ובאזורים חמים. הפירות מבשילים באביב ומתאימים לאכילה טרייה ולשימורים.",
+      "price": "70",
+      "updatedAt": "2025-05-17T09:27:45.901Z",
+      "images": [
+        {
+          "id": 23,
+          "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+          "altText": "תות אופיר",
+          "position": 0
+        }
+      ],
+      "category": "עצים",
+      "featuredImage": {
+        "id": 23,
+        "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+        "altText": "תות אופיר",
+        "position": 0
+      }
+    },
+    {
+      "id": 22,
+      "title": "פיגם",
+      "handle": "פיגם",
+      "category_id": 3,
+      "available": true,
+      "description": "פיגם הוא שיח ירוק־עד המתנשא לגובה של 0.5–1 מטר, עם עלים ירוקים־כחלחלים המדיפים ריח חזק ופריחה צהובה מרהיבה. הצמח משמש כתבלין ובעל תכונות רפואיות רבות. הוא עמיד ומתאים לגידול בגינות ובאזורים חמים.",
+      "price": "20",
+      "updatedAt": "2025-05-17T09:27:45.151Z",
+      "images": [
+        {
+          "id": 22,
+          "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+          "altText": "פיגם",
+          "position": 0
+        }
+      ],
+      "category": "צמחי-תבלין",
+      "featuredImage": {
+        "id": 22,
+        "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+        "altText": "פיגם",
+        "position": 0
+      }
+    },
+    {
+      "id": 19,
+      "title": "שיבא",
+      "handle": "שיבא",
+      "category_id": 3,
+      "available": true,
+      "description": "שיבא היא שיח ירוק־עד המתנשא לגובה של 1–2 מטרים, עם עלים ירוקים־כסופים המדיפים ריח חזק. הצמח משמש כתבלין ובעל תכונות רפואיות רבות. הוא עמיד ומתאים לגידול בגינות ובאזורים חמים.",
+      "price": "20",
+      "updatedAt": "2025-05-17T09:27:42.853Z",
+      "images": [
+        {
+          "id": 19,
+          "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+          "altText": "שיבא",
+          "position": 0
+        }
+      ],
+      "category": "צמחי-תבלין",
+      "featuredImage": {
+        "id": 19,
+        "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+        "altText": "שיבא",
+        "position": 0
+      }
+    },
+    {
+      "id": 16,
+      "title": "עירית שומית",
+      "handle": "עירית-שומית",
+      "category_id": 3,
+      "available": true,
+      "description": "עירית שומית היא צמח תבלין עשבוני רב־שנתי ממשפחת הנרקיסיים, המתנשא לגובה של עד 30 ס”מ. היא בעלת עלים ירוקים דקים וחלולים, עם טעם עדין המזכיר שילוב של בצל ושום. הצמח פורח באביב ובקיץ בפרחים לבנים קטנים, המאוגדים במעין צורה חצי כדורית, ומושך מאביקים כמו דבורים ופרפרים. מתאים לגידול בגינה, בעציצים ובאדניות, ומוסיף טעם וריח לכל תבשיל.",
+      "price": "25",
+      "updatedAt": "2025-05-17T09:27:40.543Z",
+      "images": [
+        {
+          "id": 16,
+          "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+          "altText": "עירית שומית",
+          "position": 0
+        }
+      ],
+      "category": "צמחי-תבלין",
+      "featuredImage": {
+        "id": 16,
+        "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+        "altText": "עירית שומית",
+        "position": 0
+      }
+    },
+    {
+      "id": 15,
+      "title": "צימוק יפני",
+      "handle": "צימוק-יפני",
+      "category_id": 1,
+      "available": true,
+      "description": "עץ נשיר המתנשא לגובה של 5–10 מטרים, עם נוף רחב ופריחה לבנה באביב. החלק האכיל הוא עוקץ הפרי המתעבה ומקבל טעם מתוק המזכיר צימוקים. העץ עמיד ומתאים לגידול בגינות נוי ובאזורים חמים.",
+      "price": "100",
+      "updatedAt": "2025-05-17T09:27:39.803Z",
+      "images": [
+        {
+          "id": 15,
+          "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+          "altText": "צימוק יפני",
+          "position": 0
+        }
+      ],
+      "category": "עצים",
+      "featuredImage": {
+        "id": 15,
+        "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+        "altText": "צימוק יפני",
+        "position": 0
+      }
+    },
+    {
+      "id": 14,
+      "title": "אלוורה",
+      "handle": "אלוורה",
+      "category_id": 2,
+      "available": true,
+      "description": "אלוורה היא צמח סוקולנטי ירוק־עד, המתנשא לגובה של 0.5–1 מטר. היא מכילה ג’ל בעל תכונות רפואיות רבות, המשמש לטיפול בכוויות ובעיות עור. הצמח עמיד ומתאים לגידול בגינות ובאזורים חמים.",
+      "price": "40",
+      "updatedAt": "2025-05-17T09:27:39.092Z",
+      "images": [
+        {
+          "id": 14,
+          "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+          "altText": "אלוורה",
+          "position": 0
+        }
+      ],
+      "category": "שיחים-וצמחי-תועלת",
+      "featuredImage": {
+        "id": 14,
+        "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+        "altText": "אלוורה",
+        "position": 0
+      }
+    },
+    {
+      "id": 12,
+      "title": "רימון שאמי",
+      "handle": "רימון-שאמי",
+      "category_id": 1,
+      "available": true,
+      "description": "רימון שאמי הוא זן מסורתי בעל קליפה אדומה-ורודה וגרעינים עסיסיים. טעמו מתוק מאוד עם ניחוח ייחודי, והוא מבשיל בסוף הקיץ. העץ עמיד ומתאים לגידול בגינות ובאזורים חמים.",
+      "price": "70",
+      "updatedAt": "2025-05-17T09:27:37.560Z",
+      "images": [
+        {
+          "id": 12,
+          "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+          "altText": "רימון שאמי",
+          "position": 0
+        }
+      ],
+      "category": "עצים",
+      "featuredImage": {
+        "id": 12,
+        "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+        "altText": "רימון שאמי",
+        "position": 0
+      }
+    },
+    {
+      "id": 11,
+      "title": "פפרומיות",
+      "handle": "פפרומיות",
+      "category_id": 4,
+      "available": true,
+      "description": "פפרומיה היא צמח עשבוני סוקולנטי רב־שנתי, המתאים מאוד לגידול בתוך הבית. היא מגיעה במגוון רחב של צורות ועלים בצבעים שונים, כולל ירוק, אדום, סגול וורוד, ולעיתים עם דוגמאות מגוונות. הצמח קומפקטי, גדל לאט ואינו דורש טיפול אינטנסיבי, מה שהופך אותו לאידיאלי לחללים קטנים או לגידול על אדן חלון. מעדיף אור בינוני עד בהיר עקיף, ויש להימנע מהשקיית יתר",
+      "price": "40",
+      "updatedAt": "2025-05-17T09:27:36.811Z",
+      "images": [
+        {
+          "id": 11,
+          "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+          "altText": "פפרומיות",
+          "position": 0
+        }
+      ],
+      "category": "צמחי-בית",
+      "featuredImage": {
+        "id": 11,
+        "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+        "altText": "פפרומיות",
+        "position": 0
+      }
+    },
+    {
+      "id": 9,
+      "title": "עלה דפנה קטן",
+      "handle": "עלה-דפנה-קטן",
+      "category_id": 2,
+      "available": true,
+      "description": "עלה דפנה קטן הוא שיח ירוק־עד ממשפחת העריים, המתנשא לגובה של 1–3 מטרים. עליו הריחניים משמשים כתבלין במטבח ומכילים שמנים אתריים בעלי תכונות רפואיות. הצמח עמיד ומתאים לגידול בגינות ובאזורים חמים.",
+      "price": "50",
+      "updatedAt": "2025-05-17T09:27:35.291Z",
+      "images": [
+        {
+          "id": 9,
+          "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+          "altText": "עלה דפנה קטן",
+          "position": 0
+        }
+      ],
+      "category": "שיחים-וצמחי-תועלת",
+      "featuredImage": {
+        "id": 9,
+        "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+        "altText": "עלה דפנה קטן",
+        "position": 0
+      }
+    },
+    {
+      "id": 8,
+      "title": "רימון ראש פרד",
+      "handle": "רימון-ראש-פרד",
+      "category_id": 1,
+      "available": true,
+      "description": "זן רימון ישראלי המתנשא לגובה של 2–5 מטרים, עם פריחה אדומה באביב. פירותיו ורדרדים ומתוקים, ומתאימים לאכילה טרייה ולהכנת מיצים. העץ עמיד ומתאים לגידול בגינות ובחצרות.",
+      "price": "70",
+      "updatedAt": "2025-05-17T09:27:34.513Z",
+      "images": [
+        {
+          "id": 8,
+          "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+          "altText": "רימון ראש פרד",
+          "position": 0
+        }
+      ],
+      "category": "עצים",
+      "featuredImage": {
+        "id": 8,
+        "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+        "altText": "רימון ראש פרד",
+        "position": 0
+      }
+    },
+    {
+      "id": 2,
+      "title": "שזיף קראסי",
+      "handle": "שזיף-קראסי",
+      "category_id": 1,
+      "available": true,
+      "description": "שיח קוצני או עץ קטן, המתנשא לגובה של כ־5 מטרים, עם פריחה לבנה באביב. פירותיו הקטנים והכחולים משמשים להכנת ריבות, ליקרים ומאכלים נוספים. הצמח עמיד ומתאים לגידול בגינות ובחצרות.",
+      "price": "100",
+      "updatedAt": "2025-05-17T09:27:30.032Z",
+      "images": [
+        {
+          "id": 2,
+          "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+          "altText": "שזיף קראסי",
+          "position": 0
+        }
+      ],
+      "category": "עצים",
+      "featuredImage": {
+        "id": 2,
+        "url": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png",
+        "altText": "שזיף קראסי",
+        "position": 0
+      }
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "title": "עצים",
+      "handle": "עצים",
+      "position": 0,
+      "updatedAt": "2025-05-17T09:27:25.712Z"
+    },
+    {
+      "id": 2,
+      "title": "שיחים וצמחי תועלת",
+      "handle": "שיחים-וצמחי-תועלת",
+      "position": 1,
+      "updatedAt": "2025-05-17T09:27:26.264Z"
+    },
+    {
+      "id": 3,
+      "title": "צמחי תבלין",
+      "handle": "צמחי-תבלין",
+      "position": 2,
+      "updatedAt": "2025-05-17T09:27:26.862Z"
+    },
+    {
+      "id": 4,
+      "title": "צמחי בית",
+      "handle": "צמחי-בית",
+      "position": 3,
+      "updatedAt": "2025-05-17T09:27:27.472Z"
+    },
+    {
+      "id": 5,
+      "title": "זרעים",
+      "handle": "זרעים",
+      "position": 4,
+      "updatedAt": "2025-05-17T09:27:28.511Z"
+    }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "name": "שרון שושן",
+      "email": "mscepc@gmail.com",
+      "phone": "0546597051",
+      "totalQuantity": 1,
+      "cost": "100.00",
+      "status": "ready",
+      "createdAt": "2025-06-08T08:24:04.828Z",
+      "items": [
+        {
+          "id": 1,
+          "productId": 2,
+          "handle": "שזיף-קראסי",
+          "title": "שזיף קראסי",
+          "imageUrl": "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon%20%281%29.png",
+          "imageAlt": "שזיף קראסי",
+          "quantity": 1,
+          "unitAmount": "100.00",
+          "totalAmount": "100.00"
+        }
+      ]
+    }
+  ]
+}

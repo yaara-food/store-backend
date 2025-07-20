@@ -1,35 +1,41 @@
-// scripts/insert_mock_data.ts
-
+// @ts-nocheck
 import "reflect-metadata";
+import dotenv from "dotenv";
+dotenv.config();
 
-// @ts-ignore
-import mockData from "./data/mock_products.json";
 import { DB } from "../src/lib/db";
+import { ProductImage } from "../src/lib/entities";
 
-async function resetTables() {
-  const em = DB.manager;
-  console.log("🧨 Dropping and recreating public schema...");
-  await em.query(`DROP SCHEMA public CASCADE;`);
-  await em.query(`CREATE SCHEMA public;`);
-  console.log("✅ Schema reset.");
-}
+const OLD_URL =
+  "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon%20%281%29.png";
+const NEW_URL =
+  "https://racit0uja2cckwpw.public.blob.vercel-storage.com/products/coming_soon.png";
 
-async function delete_models() {
-  const em = DB.manager;
+async function fixImageUrls() {
+  await DB.initialize();
 
-  console.log("🧨 Dropping product-related tables...");
-  await em.query(`DROP TABLE IF EXISTS "product_image" CASCADE;`);
-  await em.query(`DROP TABLE IF EXISTS "product" CASCADE;`);
-  await em.query(`DROP TABLE IF EXISTS "category" CASCADE;`);
-  console.log("✅ Tables dropped.");
-}
+  const imageRepo = DB.getRepository(ProductImage);
 
-DB.initialize()
-  .then(async () => {
-    await delete_models();
-    process.exit();
-  })
-  .catch((err) => {
-    console.error("❌ Failed to run seed script", err);
-    process.exit(1);
+  const images = await imageRepo.find({
+    where: { url: OLD_URL },
   });
+
+  if (images.length === 0) {
+    console.log("✅ No matching images found");
+    process.exit(0);
+  }
+
+  for (const img of images) {
+    img.url = NEW_URL;
+  }
+
+  await imageRepo.save(images);
+
+  console.log(`✅ Updated ${images.length} image(s) to new URL.`);
+  process.exit(0);
+}
+
+fixImageUrls().catch((err) => {
+  console.error("❌ Error fixing image URLs", err);
+  process.exit(1);
+});
