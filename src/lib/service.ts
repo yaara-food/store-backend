@@ -4,11 +4,10 @@ import { Repository } from "typeorm";
 import nodemailer from "nodemailer";
 
 import {
-  email_data,
   HttpError,
   ModelType,
   NotFoundError,
-  toHttpError,
+  toHttpError, getMessages,
 } from "./util";
 import { DB } from "./db";
 import { Category, Order, Product } from "./entities";
@@ -146,34 +145,41 @@ function getTransporter() {
   return transporter;
 }
 
+
+
 export function generateOrderEmailHtml(order: Order) {
+  const messages = getMessages().emailOrderHtml;
+  const dir = process.env.LANG === "he" ? "rtl" : "ltr";
+  const align = dir === "rtl" ? "right" : "left";
+  const currency = dir === "rtl" ? "₪" : "$";
+
   const itemsHtml = order.items
-    .map(
-      (item) => `
-    <tr style="border-bottom: 1px solid #ddd; text-align: center;">
-      <td style="padding: 8px;"><img src="${item.imageUrl}" alt="${item.imageAlt}" width="50" height="50" style="border-radius: 4px; object-fit: cover;" /></td>
-      <td style="padding: 8px;">${item.title}</td>
-      <td style="padding: 8px;">${item.quantity}</td>
-      <td style="padding: 8px;">₪${item.unitAmount}</td>
-      <td style="padding: 8px;"><strong>₪${item.totalAmount.toFixed(2)}</strong></td>
-    </tr>
-  `,
-    )
-    .join("");
+      .map(
+          (item) => `
+      <tr style="border-bottom: 1px solid #ddd; text-align: center;">
+        <td style="padding: 8px;"><img src="${item.imageUrl}" alt="${item.imageAlt}" width="50" height="50" style="border-radius: 4px; object-fit: cover;" /></td>
+        <td style="padding: 8px;">${item.title}</td>
+        <td style="padding: 8px;">${item.quantity}</td>
+        <td style="padding: 8px;">${currency}${Number(item.unitAmount).toFixed(2)}</td>
+        <td style="padding: 8px;"><strong>${currency}${Number(item.totalAmount).toFixed(2)}</strong></td>
+      </tr>
+    `,
+      )
+      .join("");
 
   return `
-    <div dir="rtl" style="font-family: sans-serif; padding: 20px; max-width: 600px; margin: auto;">
-      <h2 style="margin-bottom: 10px;">שלום ${order.name},</h2>
-      <p style="margin: 0 0 20px 0;">ההזמנה שלך התקבלה בהצלחה.</p>
+    <div dir="${dir}" style="font-family: sans-serif; padding: 10px; max-width: 600px; margin: auto;">
+      <h2 style="margin-bottom: 10px;">${messages.greeting} ${order.name},</h2>
+      <p style="margin: 0 0 20px 0;">${messages.confirmation}</p>
 
       <table cellpadding="0" cellspacing="0" style="width: 100%; border-collapse: collapse; font-size: 14px;">
         <thead style="background-color: #f5f5f5;">
           <tr style="text-align: center;">
-            <th style="padding: 10px;">תמונה</th>
-            <th style="padding: 10px;">מוצר</th>
-            <th style="padding: 10px;">כמות</th>
-            <th style="padding: 10px;">מחיר</th>
-            <th style="padding: 10px;">סה"כ</th>
+            <th style="padding: 10px;">${messages.headers.image}</th>
+            <th style="padding: 10px;">${messages.headers.product}</th>
+            <th style="padding: 10px;">${messages.headers.quantity}</th>
+            <th style="padding: 10px;">${messages.headers.price}</th>
+            <th style="padding: 10px;">${messages.headers.total}</th>
           </tr>
         </thead>
         <tbody>
@@ -181,18 +187,18 @@ export function generateOrderEmailHtml(order: Order) {
         </tbody>
       </table>
 
-      <h3 style="margin-top: 20px; text-align: right;">סה"כ לתשלום: ₪${order.cost.toFixed(2)}</h3>
-      <p style="text-align: right;">מספר הזמנה: <strong>#${order.id}</strong></p>
-      <p style="text-align: right;">תודה שקנית אצלנו 💚</p>
+      <h3 style="margin-top: 20px; text-align: ${align};">${messages.total} ${currency}${Number(order.cost).toFixed(2)}</h3>
+      <p style="text-align: ${align};">${messages.orderNumber} <strong>#${order.id}</strong></p>
+      <p style="text-align: ${align};">${messages.thanks}</p>
     </div>
   `;
 }
 
 export async function sendOrderConfirmationEmail(order: Order) {
+  const messages = getMessages();
   const html = generateOrderEmailHtml(order);
-
-  const subject = `${email_data.subjectPrefix} ${order.id}`;
-  const text = `${email_data.greeting} ${order.name}, ${email_data.confirmation} ${email_data.orderNumberLabel} #${order.id}. ${email_data.totalLabel}${order.cost.toFixed(2)}`;
+  const subject = `${messages.subjectPrefix} ${order.id}`;
+  const text = `${messages.greeting} ${order.name}, ${messages.confirmation} ${messages.orderNumberLabel} #${order.id}. ${messages.totalLabel}${Number(order.cost).toFixed(2)}`;
 
   const transporter = getTransporter();
 
@@ -222,7 +228,7 @@ export async function sendOrderConfirmationEmail(order: Order) {
 }
 
 export async function sendAdminWhatsApp(id: number) {
-  const text = `📦 התקבלה הזמנה חדשה באתר YAARASTORE!\n\n🔗 לצפייה בהזמנה: ${process.env.STORE_BASE_URL}/admin/order/${id}`;
+  const text =  getMessages().adminOrderNotification(id);
   const url = `https://api.callmebot.com/whatsapp.php?phone=${process.env.WHATSAPP_NUMBER}&text=${encodeURIComponent(text)}&apikey=${process.env.CALLMEBOT_API_KEY}`;
 
   try {
