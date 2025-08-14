@@ -7,7 +7,8 @@ import {
   HttpError,
   ModelType,
   NotFoundError,
-  toHttpError, getMessages,
+  toHttpError,
+  getMessages,
 } from "./util";
 import { DB } from "./db";
 import { Category, Order, Product } from "./entities";
@@ -145,8 +146,6 @@ function getTransporter() {
   return transporter;
 }
 
-
-
 export function generateOrderEmailHtml(order: Order) {
   const messages = getMessages().emailOrderHtml;
   const dir = process.env.LANG === "he" ? "rtl" : "ltr";
@@ -154,8 +153,8 @@ export function generateOrderEmailHtml(order: Order) {
   const currency = dir === "rtl" ? "₪" : "$";
 
   const itemsHtml = order.items
-      .map(
-          (item) => `
+    .map(
+      (item) => `
       <tr style="border-bottom: 1px solid #ddd; text-align: center;">
         <td style="padding: 8px;"><img src="${item.imageUrl}" alt="${item.imageAlt}" width="50" height="50" style="border-radius: 4px; object-fit: cover;" /></td>
         <td style="padding: 8px;">${item.title}</td>
@@ -164,8 +163,8 @@ export function generateOrderEmailHtml(order: Order) {
         <td style="padding: 8px;"><strong>${currency}${Number(item.totalAmount).toFixed(2)}</strong></td>
       </tr>
     `,
-      )
-      .join("");
+    )
+    .join("");
 
   return `
     <div dir="${dir}" style="font-family: sans-serif; padding: 10px; max-width: 600px; margin: auto;">
@@ -228,7 +227,7 @@ export async function sendOrderConfirmationEmail(order: Order) {
 }
 
 export async function sendAdminWhatsApp(id: number) {
-  const text =  getMessages().adminOrderNotification(id);
+  const text = getMessages().adminOrderNotification(id);
   const url = `https://api.callmebot.com/whatsapp.php?phone=${process.env.WHATSAPP_NUMBER}&text=${encodeURIComponent(text)}&apikey=${process.env.CALLMEBOT_API_KEY}`;
 
   try {

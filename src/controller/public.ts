@@ -112,6 +112,11 @@ export class PublicController {
     if (process.env.ALLOW_RESET_MOCK_DATA !== "true") {
       throw new HttpError(403, "Reset Mock Data is disabled");
     }
+    try {
+      require("../../scripts/mock-data.json");
+    } catch {
+      throw new HttpError(403, "No mock-data.json File");
+    }
 
     const resetDbStep1Delete = async () => {
       const orderRepo = DB.getRepository(Order);
@@ -125,7 +130,11 @@ export class PublicController {
       await DB.query(`ALTER SEQUENCE "order_id_seq" RESTART WITH 1`);
     };
     const resetDbStep2Insert = async () => {
-      const { categories, products, orders } = require("../../scripts/mock-data.json");
+      const {
+        categories,
+        products,
+        orders,
+      } = require("../../scripts/mock-data.json");
 
       const orderRepo = DB.getRepository(Order);
       const categoryRepo = DB.getRepository(Category);

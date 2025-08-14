@@ -87,7 +87,6 @@ export enum OrderStatus {
   CANCELED = "canceled",
 }
 
-
 const messages = {
   he: {
     subjectPrefix: "אישור הזמנה - מס'",
@@ -96,11 +95,11 @@ const messages = {
     orderNumberLabel: "מספר הזמנה:",
     totalLabel: `סה"כ לתשלום: ₪`,
     adminOrderNotification: (id: number) =>
-        `📦 התקבלה הזמנה חדשה באתר ${process.env.EMAIL_FROM_NAME}!\n\n🔗 לצפייה בהזמנה: ${process.env.STORE_BASE_URL}/admin/${ModelType.order}/${id}`,
+      `📦 התקבלה הזמנה חדשה באתר ${process.env.EMAIL_FROM_NAME}!\n\n🔗 לצפייה בהזמנה: ${process.env.STORE_BASE_URL}/admin/${ModelType.order}/${id}`,
     emailOrderHtml: {
       greeting: "שלום", // he
       confirmation: "ההזמנה שלך התקבלה בהצלחה.",
-      total: "סה\"כ לתשלום:",
+      total: 'סה"כ לתשלום:',
       orderNumber: "מספר הזמנה:",
       thanks: "תודה שקנית אצלנו 💚",
       headers: {
@@ -108,7 +107,7 @@ const messages = {
         product: "מוצר",
         quantity: "כמות",
         price: "מחיר",
-        total: "סה\"כ",
+        total: 'סה"כ',
       },
     },
   },
@@ -119,7 +118,7 @@ const messages = {
     orderNumberLabel: "Order Number:",
     totalLabel: "Total Amount: ₪",
     adminOrderNotification: (id: number) =>
-        `📦 A new order has been placed on ${process.env.EMAIL_FROM_NAME}!\n\n🔗 View it here: ${process.env.STORE_BASE_URL}/admin/${ModelType.order}/${id}`,
+      `📦 A new order has been placed on ${process.env.EMAIL_FROM_NAME}!\n\n🔗 View it here: ${process.env.STORE_BASE_URL}/admin/${ModelType.order}/${id}`,
     emailOrderHtml: {
       greeting: "Hello",
       confirmation: "Your order was received successfully.",
@@ -134,10 +133,10 @@ const messages = {
         total: "Total",
       },
     },
-  },};
+  },
+};
 
-
-export function getMessages(): typeof messages["en"] {
+export function getMessages(): (typeof messages)["en"] {
   const lang = process.env.LANG === "he" ? "he" : "en";
   return messages[lang];
 }

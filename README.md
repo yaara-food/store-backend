@@ -76,6 +76,7 @@ Backup script for real DB (not for seeding). This script will:
 ```bash
 pnpm tsx scripts/make_backup.ts
 ```
+
 ### 📩 [`test_order_notifications.ts`](./scripts/test_order_notifications.ts)
 
 Test script for order notification flow (email + WhatsApp). This script will:
@@ -83,7 +84,6 @@ Test script for order notification flow (email + WhatsApp). This script will:
 - Send customer confirmation email
 - Send admin WhatsApp notification
 
- 
 ```bash
 pnpm tsx scripts/test_order_notifications.ts
 ```
@@ -93,6 +93,7 @@ pnpm tsx scripts/test_order_notifications.ts
 ```bash
 SEED=true pnpm tsx scripts/test_order_notifications.ts
 ```
+
 ---
 
 ## ✅ Running Tests

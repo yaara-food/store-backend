@@ -11,12 +11,7 @@
     "dist"
   ],
   "exports": {
-    "./lib/util": "./dist/src/lib/util.js",
-    "./lib/service": "./dist/src/lib/service.js",
-    "./lib/db": "./dist/src/lib/db.js",
-    "./lib/entities": "./dist/src/lib/entities.js",
-    "./controller/public": "./dist/src/controller/public.js",
-    "./controller/auth": "./dist/src/controller/auth.js"
+    "./*": "./dist/src/*"
   },
   "keywords": [
     "express",
@@ -35,8 +30,9 @@
     "cron": "tsx scripts/cron.ts",
     "nodemon": "nodemon --exec tsx src/dev.ts",
     "debug": "npx --node-arg=--inspect-brk tsx src/dev.ts",
-    "debug:script": "node --inspect-brk node_modules/.bin/tsx scripts/real_data.ts",
+    "debug:script": "node --inspect-brk node_modules/.bin/tsx scripts/make_backup.ts",
     "typecheck": "tsc --noEmit",
+    "prettier": "npx prettier --write .",
     "build": "pnpm typecheck && tsc",
     "start": "node dist/index.js",
     "test": "vitest run",
